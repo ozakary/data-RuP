@@ -241,7 +241,7 @@ Upon completion, `mace_run_train` produces the following files in the fine-tunin
 ## Requirements
 
 - **Supercomputer**: Mahti supercomputer at CSC — IT Center for Science (Finland). More details: [www.mahti.csc.fi](https://www.mahti.csc.fi)
-- **GPU**: NVIDIA A100 (partition `gpusmall`)
+- **GPU**: NVIDIA A100
 - **Python**: PyTorch module `pytorch/2.7`
 - **MACE**: Installed in virtual environment `mace_env_2` (see [MACE GitHub](https://github.com/ACEsuit/mace))
 - **ASE**: Atomic Simulation Environment, for trajectory conversion (`ase convert`)
