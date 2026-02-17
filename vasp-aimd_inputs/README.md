@@ -81,7 +81,7 @@ Each simulation run consists of 500 ionic steps (1 fs timestep), with multiple c
     └── 450K/
 ```
 
-## Input Files
+## Example Input Files (Monoclinic Phase at 11 K)
 
 - [`INCAR`](./INCAR): AIMD calculation parameters (functional, MD settings, thermostat)
 - [`KPOINTS`](./KPOINTS): k-point sampling specification (Γ-point only)
