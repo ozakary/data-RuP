@@ -116,7 +116,7 @@ The scripts read from and write to the individual temperature subdirectories of 
 
 ## Input Files
 
-- [`trajslicer_src.py`](https://github.com/ozakary/TrajSlicer/trajslicer_src.py): Trajectory conversion tool — extracts and relabels frames from a LAMMPS dump file into XYZ format. Source: [github.com/ozakary/TrajSlicer](https://github.com/ozakary/TrajSlicer)
+- [`trajslicer_src.py`](https://github.com/ozakary/TrajSlicer/blob/main/trajslicer_src.py): Trajectory conversion tool — extracts and relabels frames from a LAMMPS dump file into XYZ format. Source: [github.com/ozakary/TrajSlicer](https://github.com/ozakary/TrajSlicer)
 - [`generate_average_strs_corrected.py`](./generate_average_strs_corrected.py): Computes NpT-corrected time-averaged structures from XYZ trajectories for all 23 temperatures
 
 ## Output Files
