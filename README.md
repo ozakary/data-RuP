@@ -25,10 +25,11 @@ The repository comprises the following sections:
 1. `VASP` input files for AIMD simulations. ([directory](./vasp-aimd_inputs/))  
 2. Dataset preparation procedure and `.config` file for fine-tuning `MACE-MP-0b3` foundation model. ([directory](./mace-mp-0b3_fine-tuning/))  
 3. `LAMMPS` input files for machine learning MD simulations. ([directory](./lammps-mlmd_simulations/))  
-4. Python scripts used to compute RDFs and structure factors. ([directory](./rdfs_and_structure-factors/))  
-5. Python scripts used to compute local-order metrics. ([directory](./local-order_metrics/))  
-6. Python scripts used for the machine learning-accelerated phonon dispersion analysis. ([directory](./ml-phonons/))  
-7. Python scripts and raw numerical data for all figures used in the main manuscript and the Supporting Information. ([directory](./figures/))  
+4. Python script for processing the output MLMD trajectories and creating the average structures. ([directory](./processing_and_average_str/))  
+5. Python scripts used to compute RDFs and structure factors. ([directory](./rdfs_and_structure-factors/))  
+6. Python scripts used to compute local-order metrics. ([directory](./local-order_metrics/))  
+7. Python scripts used for the machine learning-accelerated phonon dispersion analysis. ([directory](./ml-phonons/))  
+8. Python scripts and raw numerical data for all figures used in the main manuscript and the Supporting Information. ([directory](./figures/))  
 
 ## Citations
 If you use this data, please cite the following:
