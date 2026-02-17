@@ -280,7 +280,7 @@ This script reads the pre-computed `band_data_{T}K.npz` files for all temperatur
 | [`job_script_2-mace_forces_predict_{T}K.sh`](./job_script_2-mace_forces_predict_10K.sh) | SLURM job for Step 2 (one per temperature) |
 | [`job_script_3-compute_force_constants.sh`](./job_script_3-compute_force_constants.sh) | SLURM job for Step 3 |
 | [`job_script_4-calculate_band_structure_{T}K_oom-fix.sh`](./job_script_4-calculate_band_structure_10K_oom-fix.sh) | SLURM job for Step 4 (one per temperature) |
-| [`fine-tuned_mace-mp-0b3-medium_compiled.model`](./fine-tuned_mace-mp-0b3-medium_compiled.model) | Compiled fine-tuned MACE potential used for force prediction |
+| `fine-tuned_mace-mp-0b3-medium_compiled.model` | Compiled fine-tuned MACE potential used for force prediction |
 
 ---
 
