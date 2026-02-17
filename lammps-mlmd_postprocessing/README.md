@@ -10,7 +10,7 @@ This directory contains the Python scripts used to postprocess the raw LAMMPS ML
 
 ---
 
-## Step 1 — Trajectory Conversion: LAMMPS Dump → XYZ
+## Step 1 — Trajectory Conversion: LAMMPS Dump to XYZ
 
 The raw LAMMPS `trajectory.dump` files are converted to the extended XYZ format using **TrajSlicer**, a lightweight trajectory processing tool. For each temperature, the following command is run inside the corresponding simulation directory:
 
@@ -100,9 +100,9 @@ The scripts read from and write to the individual temperature subdirectories of 
 ../lammps-mlmd_simulations/
 ├── 10K/
 │   └── lammps_out/
-│       ├── trajectory.dump                                    ← input
-│       ├── rup_traj_sampled-50_100ps.xyz                      ← Step 1 output
-│       └── rup_traj_sampled-50_100ps_average_structure_10K.xyz ← Step 2 output
+│       ├── trajectory.dump                                    # input
+│       ├── rup_traj_sampled-50_100ps.xyz                      # Step 1 output
+│       └── rup_traj_sampled-50_100ps_average_structure_10K.xyz # Step 2 output
 ├── 50K/
 │   └── lammps_out/
 │       ├── ...
@@ -116,7 +116,7 @@ The scripts read from and write to the individual temperature subdirectories of 
 
 ## Input Files
 
-- [`trajslicer_src.py`](./trajslicer_src.py): Trajectory conversion tool — extracts and relabels frames from a LAMMPS dump file into XYZ format. Source: [github.com/ozakary/TrajSlicer](https://github.com/ozakary/TrajSlicer)
+- [`trajslicer_src.py`](https://github.com/ozakary/TrajSlicer/trajslicer_src.py): Trajectory conversion tool — extracts and relabels frames from a LAMMPS dump file into XYZ format. Source: [github.com/ozakary/TrajSlicer](https://github.com/ozakary/TrajSlicer)
 - [`generate_average_strs_corrected.py`](./generate_average_strs_corrected.py): Computes NpT-corrected time-averaged structures from XYZ trajectories for all 23 temperatures
 
 ## Output Files
