@@ -40,9 +40,9 @@ If you use this data, please cite the following:
   title={Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor},
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
   journal={ChemRxiv},
-  year={2025},
-  doi={10.26434/chemrxiv-2025-68g6s},
-  url={https://doi.org/10.26434/chemrxiv-2025-68g6s},
+  year={2026},
+  doi={TBA},
+  url={TBA},
   note={Preprint}
 }
 ```
@@ -53,7 +53,7 @@ If you use this data, please cite the following:
 @dataset{zakary_2025_data_rup_ml,
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
   title = {Supporting Data for "Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor"},
-  year = {2025},
+  year = {2026},
   publisher = {Zenodo},
   doi = {TBA},
   url = {TBA}
@@ -65,7 +65,7 @@ If you use this data, please cite the following:
 @misc{zakary_2025_github_rup_ml,
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
   title = {Supporting Code for "Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor"},
-  year = {2025},
+  year = {2026},
   publisher = {GitHub},
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/ozakary/data-RuP}},
