@@ -6,7 +6,7 @@
 
 ---
 
-📄 Authors: **Ouail Zakary** and **Niraj Aryal**
+📄 Author: **Ouail Zakary**
 
 ---
 
@@ -18,16 +18,17 @@
 
 ---
 
-This is the supporting code for the manuscript “***Short-Range Ordering and Phase Transition in RuP Superconductor Unlocked by Machine Learning-Accelerated Molecular Dynamics***”. [DOI: TBA]
+This is the supporting code for the manuscript “***Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor***”. [DOI: TBA]
 
 The repository comprises the following sections:
 
-1. Dataset preparation for the three MLIP models:  
-   i. Configuration generation using ab initio MD simulations. ([directory](./aimd/))  
-   iii. Dataset format of the MLIP models. ([directory](./mlip_dataset/))  
-3. Example of training, validation, and testing processes for a MLIP model using Allegro and MACE architectures. ([directory](./allegro-mace_model/))  
-4. Machine learning-assisted MD simulations. ([directory](./mlmd_simulations/))  
-5. Python scripts and raw numerical data for all figures related to the NMR-ML model included in the main manuscript and the Supporting Information. ([directory](./figures/))  
+1. VASP input files for AIMD simulations. ([directory](./vasp-aimd_inputs/))  
+2. Dataset preparation procedure and `.config` file for fine-tuning `MACE-MP-0b3` foundation model. ([directory](./mace-mp-0b3_fine-tuning/))  
+3. LAMMPS input files for machine learning MD simulations. ([directory](./lammps-mlmd_simulations/))  
+4. Python scripts used to compute RDFs and structure factors. ([directory](./rdfs_and_structure-factors/))  
+5. Python scripts used to compute local-order metrics. ([directory](./local-order_metrics/))  
+6. Python scripts used for the machine learning-accelerated phonon dispersion analysis. ([directory](./ml-phonons/))  
+7. Python scripts and raw numerical data for all figures used in the main manuscript and the Supporting Information. ([directory](./figures/))  
 
 ## Citations
 If you use this data, please cite the following:
@@ -36,8 +37,8 @@ If you use this data, please cite the following:
 
 ```bibtex
 @article{zakary_2025_rup_ml,
-  title={Short-Range Ordering and Phase Transition in RuP Superconductor Unlocked by Machine Learning-Accelerated Molecular Dynamics},
-  author = {Zakary, Ouail, and Bozin, Emil S., and Yin, Weiguo and Aryal, Niraj},
+  title={Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor},
+  author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
   journal={ChemRxiv},
   year={2025},
   doi={10.26434/chemrxiv-2025-68g6s},
@@ -50,8 +51,8 @@ If you use this data, please cite the following:
 
 ```bibtex
 @dataset{zakary_2025_data_rup_ml,
-  author = {Zakary, Ouail, and Bozin, Emil S., and Yin, Weiguo and Aryal, Niraj},
-  title = {Supporting Data for "Short-Range Ordering and Phase Transition in RuP Superconductor Unlocked by Machine Learning-Accelerated Molecular Dynamics"},
+  author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
+  title = {Supporting Data for "Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor"},
   year = {2025},
   publisher = {Zenodo},
   doi = {TBA},
@@ -62,8 +63,8 @@ If you use this data, please cite the following:
 ### Code
 ```bibtex
 @misc{zakary_2025_github_rup_ml,
-  author = {Zakary, Ouail, and Bozin, Emil S., and Yin, Weiguo and Aryal, Niraj},
-  title = {Supporting Code for "Short-Range Ordering and Phase Transition in RuP Superconductor Unlocked by Machine Learning-Accelerated Molecular Dynamics"},
+  author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
+  title = {Supporting Code for "Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor"},
   year = {2025},
   publisher = {GitHub},
   journal = {GitHub repository},
