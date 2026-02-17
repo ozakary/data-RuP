@@ -326,18 +326,18 @@ python3 plot_space_correlation.py \
 
 | File | Location | Description |
 |------|----------|-------------|
-| [`code_distances_compute_vf.py`](./ru-ru_along-110-direction_vs_time_and_distr/code_distances_compute_vf.py) | `ru-ru_along-110-direction_vs_time_and_distr/` | Computes Ru–Ru distances along [110] |
-| [`code_distances_plot_all-temps_kde_2d-map_vf3.py`](./ru-ru_along-110-direction_vs_time_and_distr/code_distances_plot_all-temps_kde_2d-map_vf3.py) | `ru-ru_along-110-direction_vs_time_and_distr/` | Plots KDE distributions and 2D maps |
-| [`code_dimer_bond_order_compute.py`](./dimer_bond_order/code_dimer_bond_order_compute.py) | `dimer_bond_order/` | Computes dimer bond order parameter |
-| [`code_dimer_bond_order_plot_vf.py`](./dimer_bond_order/code_dimer_bond_order_plot_vf.py) | `dimer_bond_order/` | Plots dimer bond order |
-| [`code_trimer_angle_order_compute_v2.py`](./trimer_angle_order_dashed-curves/code_trimer_angle_order_compute_v2.py) | `trimer_angle_order_dashed-curves/` | Computes trimer angle order parameter |
-| [`code_trimer_angle_order_plot_vf.py`](./trimer_angle_order_dashed-curves/code_trimer_angle_order_plot_vf.py) | `trimer_angle_order_dashed-curves/` | Plots trimer angle order |
-| [`code_trimer_bond_order_plot.py`](./trimer_bond_order/code_trimer_bond_order_plot.py) | `trimer_bond_order/` | Computes and plots trimer bond order |
-| [`code_trimer_bond_order_plot_vf.py`](./trimer_bond_order/code_trimer_bond_order_plot_vf.py) | `trimer_bond_order/` | Final-version plot of trimer bond order |
-| [`compute_time_correlation.py`](./correlation_functions/time_correlation/compute_time_correlation.py) | `correlation_functions/time_correlation/` | Computes time auto-correlation of dimer bond order |
-| [`plot_time_correlation.py`](./correlation_functions/time_correlation/plot_time_correlation.py) | `correlation_functions/time_correlation/` | Plots time auto-correlation, relaxation time, oscillation period |
-| [`compute_space_correlation_para-perp.py`](./correlation_functions/space_correlation/compute_space_correlation_para-perp.py) | `correlation_functions/space_correlation/` | Computes perpendicular and parallel space correlation functions |
-| [`plot_space_correlation.py`](./correlation_functions/space_correlation/plot_space_correlation.py) | `correlation_functions/space_correlation/` | Plots space correlation functions and extracts correlation lengths |
+| [`code_distances_compute_vf.py`](./code_distances_compute_vf.py) | `ru-ru_along-110-direction_vs_time_and_distr/` | Computes Ru–Ru distances along [110] |
+| [`code_distances_plot_all-temps_kde_2d-map_vf3.py`](./code_distances_plot_all-temps_kde_2d-map_vf3.py) | `ru-ru_along-110-direction_vs_time_and_distr/` | Plots KDE distributions and 2D maps |
+| [`code_dimer_bond_order_compute.py`](./code_dimer_bond_order_compute.py) | `dimer_bond_order/` | Computes dimer bond order parameter |
+| [`code_dimer_bond_order_plot_vf.py`](./code_dimer_bond_order_plot_vf.py) | `dimer_bond_order/` | Plots dimer bond order |
+| [`code_trimer_angle_order_compute_v2.py`](./code_trimer_angle_order_compute_v2.py) | `trimer_angle_order_dashed-curves/` | Computes trimer angle order parameter |
+| [`code_trimer_angle_order_plot_vf.py`](./code_trimer_angle_order_plot_vf.py) | `trimer_angle_order_dashed-curves/` | Plots trimer angle order |
+| [`code_trimer_bond_order_plot.py`](./code_trimer_bond_order_plot.py) | `trimer_bond_order/` | Computes and plots trimer bond order |
+| [`code_trimer_bond_order_plot_vf.py`](./code_trimer_bond_order_plot_vf.py) | `trimer_bond_order/` | Final-version plot of trimer bond order |
+| [`compute_time_correlation.py`](./compute_time_correlation.py) | `correlation_functions/time_correlation/` | Computes time auto-correlation of dimer bond order |
+| [`plot_time_correlation.py`](./plot_time_correlation.py) | `correlation_functions/time_correlation/` | Plots time auto-correlation, relaxation time, oscillation period |
+| [`compute_space_correlation_para-perp.py`](./compute_space_correlation_para-perp.py) | `correlation_functions/space_correlation/` | Computes perpendicular and parallel space correlation functions |
+| [`plot_space_correlation.py`](./plot_space_correlation.py) | `correlation_functions/space_correlation/` | Plots space correlation functions and extracts correlation lengths |
 
 ---
 
