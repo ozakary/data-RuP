@@ -1,0 +1,76 @@
+#!/bin/bash
+
+#SBATCH --account=plantto
+#SBATCH --partition=gpusmall
+#SBATCH --time=36:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --gres=gpu:a100:1
+#SBATCH --output=mlp-output_%j.txt
+#SBATCH --error=mlp-errors_%j.txt
+
+#================================< Instructions-Section for Training MACE Potential >============================================
+#--------------------------------------------------------------------------------------------------------------------------------
+
+# Load necessary modules (!!checkh the availability of the following modules when using another machine!!)
+# If certian modules are not available on your machine, contact the corrsponding admin(s) to install them.
+module load pytorch/2.7 #necessary for 'mace_run_train'
+
+# using a virtual environment (!!when using v-env all the packages and dependencies should be installed in that mace-venv!!) 
+# python3 -m venv --system-site-packages mace-venv # should be used if there is no existent v-env
+source /scratch/plantto/zakaryou/packages/mace_installation/mace_env_2/bin/activate
+
+# Using the 'ulimit' command to control the user-level resource limits for processes. the option '-s unlimited' specifies that 
+# there should be no limit on the stack size for the processes launched by the job. The stack size is the amount of memory 
+# allocated for the call stack of a program.
+ulimit -s unlimited
+
+# Start of training the MACE architecture :
+
+mace_run_train \
+	--name="fine-tuned_mace-mp-0b3-medium" \
+	--foundation_model="./mace-mp-0b3-medium.model" \
+	--multiheads_finetuning=False \
+	--train_file="./dataset/rup_dataset_train.xyz" \
+	--valid_file="./dataset/rup_dataset_valid.xyz" \
+	--test_file="./dataset/rup_dataset_test.xyz" \
+       	--loss="universal" \
+       	--energy_weight=1 \
+	--forces_weight=10 \
+	--compute_stress=True \
+	--compute_forces=True \
+	--compute_avg_num_neighbors=True \
+	--stress_weight=100 \
+	--stress_key='REF_stress' \
+	--eval_interval=1 \
+	--error_table='PerAtomMAE' \
+	--interaction_first="RealAgnosticResidualInteractionBlock" \
+	--interaction="RealAgnosticResidualInteractionBlock" \
+	--num_interactions=2 \
+	--correlation=3 \
+	--max_ell=3 \
+	--r_max=6.0 \
+	--max_L=2 \
+	--num_channels=128 \
+	--num_radial_basis=10 \
+	--MLP_irreps="16x0e" \
+	--scaling='rms_forces_scaling' \
+	--lr=0.005 \
+	--weight_decay=1e-8 \
+       	--ema \
+	--ema_decay=0.995 \
+	--scheduler_patience=5 \
+	--batch_size=2 \
+	--valid_batch_size=4 \
+	--max_num_epochs=1000 \
+	--patience=30 \
+	--amsgrad \
+	--device="cuda" \
+	--default_dtype="float64" \
+	--seed=3 \
+	--clip_grad=100 \
+	--E0s="average" \
+        --enable_cueq=True \
+	--restart_latest
+
+exit 0
