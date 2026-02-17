@@ -47,7 +47,7 @@ Run from `<root>/data_analysis_dense_sampling/ru-ru_along-110-direction_vs_time_
 python3 code_distances_compute_vf.py
 ```
 
-Computes the Ru–Ru distances along the [110] crystallographic direction as a function of simulation time for all temperatures, reading from the XYZ trajectories in each temperature's `lammps_out/` directory.
+Computes the Ru–Ru distances along the [110] crystallographic direction as a function of temperatures, reading from the XYZ trajectories in each temperature's `lammps_out/` directory.
 
 ### Step 2 — Plot
 
@@ -64,7 +64,7 @@ Produces KDE (kernel density estimate) distributions and 2D time–distance maps
 | | Path |
 |---|---|
 | **Input** (per temperature) | `../../{T}K/lammps_out/rup_traj_sampled-50_100ps.xyz` |
-| **Output** | Distance distribution plots and 2D maps |
+| **Output** | Ru-Ru distance data and plots |
 
 ---
 
@@ -78,7 +78,7 @@ Run from `<root>/data_analysis_dense_sampling/dimer_bond_order/`:
 python3 code_dimer_bond_order_compute.py
 ```
 
-Computes the dimer bond order parameter from the MLMD trajectories for all temperatures and writes one CSV file per temperature (`dimer_order_{T}K.csv`).
+Computes the dimer bond order parameter from the MLMD trajectories for all temperatures.
 
 ### Step 2 — Plot
 
@@ -95,7 +95,7 @@ Visualizes the dimer bond order parameter as a function of temperature.
 | | Path |
 |---|---|
 | **Input** (per temperature) | `../../{T}K/lammps_out/rup_traj_sampled-50_100ps.xyz` |
-| **Output** | `dimer_order_{T}K.csv`, dimer bond order plots |
+| **Output** | Dimer bond order data and plots |
 
 ---
 
@@ -109,7 +109,7 @@ Run from `<root>/data_analysis_dense_sampling/trimer_angle_order_dashed-curves/`
 python3 code_trimer_angle_order_compute_v2.py
 ```
 
-Computes the trimer angle order parameter — characterizing the angular arrangement of Ru trimers — from the MLMD trajectories for all temperatures.
+Computes the trimer angle order parameter from the MLMD trajectories for all temperatures.
 
 ### Step 2 — Plot
 
@@ -119,14 +119,14 @@ Run from `<root>/data_analysis_dense_sampling/trimer_angle_order_dashed-curves/`
 python3 code_trimer_angle_order_plot_vf.py
 ```
 
-Produces temperature-resolved plots of the trimer angle order parameter with dashed-curve style.
+Produces plots of the trimer angle order parameter as a function of temperature.
 
 ### Input / Output
 
 | | Path |
 |---|---|
 | **Input** (per temperature) | `../../{T}K/lammps_out/rup_traj_sampled-50_100ps.xyz` |
-| **Output** | Trimer angle order plots |
+| **Output** | Trimer angle order data and plots |
 
 ---
 
@@ -148,14 +148,14 @@ Run from `<root>/data_analysis_dense_sampling/trimer_bond_order/`:
 python3 code_trimer_bond_order_plot_vf.py
 ```
 
-Computes and visualizes the trimer bond order parameter — characterizing the bond-length asymmetry within Ru trimers — across all temperatures.
+Computes and visualizes the trimer bond order parameter across all temperatures.
 
 ### Input / Output
 
 | | Path |
 |---|---|
 | **Input** (per temperature) | `../../{T}K/lammps_out/rup_traj_sampled-50_100ps.xyz` |
-| **Output** | Trimer bond order plots |
+| **Output** | Trimer bond order data and plots |
 
 ---
 
@@ -175,7 +175,7 @@ python3 compute_time_correlation.py \
     -maxtime 400
 ```
 
-Computes the time auto-correlation function of the dimer bond order parameter from the per-temperature CSV files produced in Section 2. The maximum lag time is set to 400 frames.
+Computes the time auto-correlation function of the dimer bond order parameter from the data produced in Section 2.
 
 Key arguments:
 
@@ -213,7 +213,7 @@ Key arguments:
 
 - Time auto-correlation function C(t) of the dimer bond order parameter for all temperatures
 - **Relaxation time** τ extracted from the decay of C(t)
-- **Oscillation period** extracted from the oscillatory features of C(t)
+- **Oscillation period** extracted from C(t)
 
 ### Input / Output
 
@@ -221,7 +221,7 @@ Key arguments:
 |---|---|
 | **Input** | `../../dimer_bond_order/dimer_order_{T}K.csv` |
 | **Intermediate** | `./time_corr_data/` |
-| **Output** | `time_corr_plot.*` |
+| **Output** | C(t) data and plots |
 
 ---
 
@@ -318,7 +318,7 @@ python3 plot_space_correlation.py \
 |---|---|
 | **Input** (per temperature) | `../../../{T}K/lammps_out/rup_traj_sampled-50_100ps.xyz` |
 | **Intermediate** | `./space_corr_perp/` and `./space_corr_parallel/` |
-| **Output** | `space_corr_perp_plot.*` and `space_corr_parallel_plot.*` |
+| **Output** | Space correlation function data and plots |
 
 ---
 
