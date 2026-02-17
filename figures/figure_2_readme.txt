@@ -1,0 +1,1 @@
+Crystal structure visualizations of the monoclinic and orthorhombic phases of RuP (panels a–e) were produced using VESTA. The individual panels were arranged and annotated using Inkscape to form the complete figure.
