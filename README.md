@@ -1,4 +1,4 @@
-# Supporting Code for “*Short-Range Ordering and Phase Transition in RuP Superconductor Unlocked by Machine Learning-Accelerated Molecular Dynamics*”
+# Supporting Code for “*Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor*”
 
 ## Graphical Abstract
 
