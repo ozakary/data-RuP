@@ -1,0 +1,1 @@
+Panels S1a, S1b, and S1c (training and validation progress for energy, forces, and stress from the Allegro MLIP) were generated using fig-s1-a_code_plot_energy.py, fig-s1-b_code_plot_force.py, and fig-s1-c_code_plot_stress.py, respectively. The three panels were assembled in Inkscape to form the complete figure.
