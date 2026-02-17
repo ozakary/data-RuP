@@ -1,0 +1,1 @@
+Panels S8a, S8b, and S8c (training and validation progress for energy, forces, and stress from the fine-tuning of MACE-MP-0b3) were generated using fig-s8-a_code_plot_energy.py, fig-s8-b_code_plot_force.py, and fig-s8-c_code_plot_stress.py, respectively. The three panels were assembled in Inkscape to form the complete figure.
