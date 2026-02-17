@@ -60,7 +60,7 @@ If you use this data, please cite the following:
 }
 ```
 
-### Code
+### Code [![DOI](https://img.shields.io/badge/GitHub-ozakary%2Fdata--RuP-blue.svg)](https://github.com/ozakary/data-RuP)
 ```bibtex
 @misc{zakary_2025_github_rup_ml,
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
