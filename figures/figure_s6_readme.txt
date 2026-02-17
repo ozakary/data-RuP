@@ -1,0 +1,1 @@
+All correlation panels for Figure S6 (force components: f_x, f_y, f_z) are DFT vs. ML (MACE-MP-0b3) correlation plots, all generated using fig-1c_code_compare_v4.py. For each figure, the individual panels were assembled in Inkscape.
