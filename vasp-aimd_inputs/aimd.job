@@ -1,0 +1,47 @@
+#!/bin/bash -l
+
+################### VASP Job Batch Script (O. Zakary, 2022) ###################
+# SLURM-section
+#SBATCH --job-name=11K-mono
+#SBATCH --partition=medium
+#SBATCH --account=plantto # !!it is mandatory to specify the account (project) as precised in the CSC rules!!
+#SBATCH --ntasks=1024
+#SBATCH --cpus-per-task=1
+#SBATCH --time=0-36:00:00
+#SBATCH --output=aimd-1-output_%j.txt
+#SBATCH --error=aimd-1-errors_%j.txt
+##############################################################################
+
+# Select VASP module of choice
+module load vasp
+
+
+runvasp="srun vasp_gam_dftd4"
+
+# make sure to always start with the same structure
+cp CONTCAR.6 POSCAR
+
+i=7
+
+while [ $i -le 10 ] 
+do
+  # start vasp
+  $runvasp
+
+  # use the last configuration generated in the previous
+  # run as initial configuration for the next run
+  cp CONTCAR POSCAR
+
+  # backup some important files
+  cp XDATCAR XDATCAR.$i
+  cp OUTCAR OUTCAR.$i
+  cp CONTCAR CONTCAR.$i
+  cp OSZICAR OSZICAR.$i
+  cp REPORT REPORT.$i
+  cp vasprun.xml vasprun.xml.$i
+  cp vaspout.h5 vaspout.h5.$i
+  cp PCDAT PCDAT.$i
+  cp DOSCAR DOSCAR.$i
+
+  let i=i+1
+done
