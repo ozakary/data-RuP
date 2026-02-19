@@ -1,4 +1,4 @@
-# Supporting Code for “*Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor*”
+# Supporting Code for “*Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in the Parent Compound of Ru-Pnictide Superconductor*”
 
 ## Graphical Abstract
 
@@ -18,7 +18,7 @@
 
 ---
 
-This is the supporting code for the manuscript “***Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor***”. [DOI: TBA]
+This is the supporting code for the manuscript “***Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in the Parent Compound of Ru-Pnictide Superconductor***”. [DOI: TBA]
 
 The repository comprises the following sections:
 
@@ -38,7 +38,7 @@ If you use this data, please cite the following:
 
 ```bibtex
 @article{zakary_2025_rup_ml,
-  title={Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor},
+  title={Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in the Parent Compound of Ru-Pnictide Superconductor},
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
   journal={ChemRxiv},
   year={2026},
@@ -53,7 +53,7 @@ If you use this data, please cite the following:
 ```bibtex
 @dataset{zakary_2025_data_rup_ml,
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
-  title = {Supporting Data for "Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor"},
+  title = {Supporting Data for "Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in the Parent Compound of Ru-Pnictide Superconductor"},
   year = {2026},
   publisher = {Zenodo},
   doi = {TBA},
@@ -65,7 +65,7 @@ If you use this data, please cite the following:
 ```bibtex
 @misc{zakary_2025_github_rup_ml,
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
-  title = {Supporting Code for "Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in RuP Superconductor"},
+  title = {Supporting Code for "Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in the Parent Compound of Ru-Pnictide Superconductor"},
   year = {2026},
   publisher = {GitHub},
   journal = {GitHub repository},
