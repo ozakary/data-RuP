@@ -261,7 +261,7 @@ def plot_space_correlation(temperatures, correlations, distances_list, args):
     ax.set_xlabel(r'$r$ / Å')
     ax.set_ylabel(r'$C_{\bot}(r)$') # perp = \bot and para = \parallel
     ax.set_xlim(args.xmin, args.xmax)
-    ax.set_ylim(-0.025, 0.15)
+    ax.set_ylim(-0.05, 0.3)
     
     # Set number of ticks
     ax.xaxis.set_major_locator(LinearLocator(numticks=5))
@@ -303,17 +303,19 @@ def plot_correlation_length(temperatures, xi_values, args):
     for idx, (T, xi) in enumerate(zip(temps_sorted, xi_sorted)):
         ax.scatter([T], [xi], s=60, color=colors[idx],
                   edgecolors='white', linewidths=0.6, zorder=3)
+                  
+#    ax.axhline(y=0, color='grey', linestyle='--', linewidth=2.5)
     
     ax.set_xlabel(r'$T$ / K')
     ax.set_ylabel(r'$\xi_{\bot}$ / Å')  # perp = \bot and para = \parallel
     
     ax.set_xlim(0, 750)
-    ax.set_ylim(0.0, 110.0)
+    ax.set_ylim(0.0, 1300.0)
     
     
     # Set number of ticks
     ax.xaxis.set_major_locator(LinearLocator(numticks=4))
-    ax.yaxis.set_major_locator(LinearLocator(numticks=6))
+    ax.yaxis.set_major_locator(LinearLocator(numticks=7))
     
     output_file = f"{args.output_prefix}_correlation_length.svg"
     plt.savefig(output_file, bbox_inches='tight')
