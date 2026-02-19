@@ -243,7 +243,7 @@ python3 compute_space_correlation_para-perp.py \
     -delta 1.0 \
     -start 0 \
     -step 10 \
-    --max-distance 40
+    --max-distance 54
 ```
 
 **Step 2 — Plot:**
@@ -252,8 +252,7 @@ python3 compute_space_correlation_para-perp.py \
 python3 plot_space_correlation.py \
     -i ./space_corr_perp/ \
     -o space_corr_perp_plot \
-    --xmax 40 \
-    --smooth \
+    --xmax 54 \
     --xi-method envelope
 ```
 
@@ -269,7 +268,7 @@ python3 compute_space_correlation_para-perp.py \
     -delta 1.0 \
     -start 0 \
     -step 10 \
-    --max-distance 40 \
+    --max-distance 25 \
     --parallel
 ```
 
@@ -279,8 +278,7 @@ python3 compute_space_correlation_para-perp.py \
 python3 plot_space_correlation.py \
     -i ./space_corr_parallel/ \
     -o space_corr_parallel_plot \
-    --xmax 40 \
-    --smooth \
+    --xmax 25 \
     --xi-method envelope
 ```
 
@@ -304,7 +302,6 @@ python3 plot_space_correlation.py \
 | `-i` | `./space_corr_perp/` or `./space_corr_parallel/` | Input directory |
 | `-o` | `space_corr_perp_plot` or `space_corr_parallel_plot` | Output figure prefix |
 | `--xmax` | 40 Å | Maximum distance shown on x-axis |
-| `--smooth` | — | Apply smoothing to correlation curves |
 | `--xi-method` | `envelope` | Method for extracting correlation length ξ (envelope fit) |
 
 #### Output
