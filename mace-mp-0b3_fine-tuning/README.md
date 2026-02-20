@@ -234,7 +234,7 @@ Upon completion, `mace_run_train` produces the following files in the fine-tunin
 
 - [`sampling_data.py`](./dataset/sampling_data.py): Script to subsample AIMD trajectories (every 10th step)
 - [`xyz_splitter.py`](./dataset/xyz_splitter.py): Script to randomly split the master XYZ dataset into train/validation/test sets
-- `sampled-2_mono_and_ortho_all_NpT_DFTD4_ML-dataset.xyz`: XYZ dataset (all phases and temperatures, subsampled)
+- [`sampled-2_mono_and_ortho_all_NpT_DFTD4_ML-dataset.xyz`](https://doi.org/10.5281/zenodo.18709769): XYZ dataset (all phases and temperatures, subsampled)
 - [`mace-mp-0b3-medium.model`](./https://github.com/ACEsuit/mace-foundations/releases/tag/mace_mp_0b3): Pre-trained MACE-MP-0b3 foundation model (medium size)
 - [`script_mace_fm_fine-tuning.job`](./script_mace_fm_fine-tuning.job): SLURM batch job script for fine-tuning on Mahti
 
