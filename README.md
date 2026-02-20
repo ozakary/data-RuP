@@ -40,7 +40,7 @@ If you use this data, please cite the following:
 @article{zakary_2025_rup_ml,
   title={Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in the Parent Compound of Ru-Pnictide Superconductor},
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
-  journal={ChemRxiv},
+  journal={rXiv},
   year={2026},
   doi={TBA},
   url={TBA},
@@ -48,7 +48,7 @@ If you use this data, please cite the following:
 }
 ```
 
-### Dataset
+### Dataset [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18709769-blueviolet.svg)](https://doi.org/10.5281/zenodo.18709769)
 
 ```bibtex
 @dataset{zakary_2025_data_rup_ml,
@@ -56,8 +56,8 @@ If you use this data, please cite the following:
   title = {Supporting Data for "Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in the Parent Compound of Ru-Pnictide Superconductor"},
   year = {2026},
   publisher = {Zenodo},
-  doi = {TBA},
-  url = {TBA}
+  doi = {10.5281/zenodo.18709769},
+  url = {https://doi.org/10.5281/zenodo.18709769}
 }
 ```
 
