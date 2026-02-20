@@ -130,7 +130,7 @@ Each temperature subdirectory contains the same set of input files, with only th
 
 - [`mono_lammps.in`](./mono_lammps.in): LAMMPS input script defining the simulation setup, potential, ensemble, and output
 - [`monoclinic_pdf_refinement_single_crystal_11K.data`](./monoclinic_pdf_refinement_single_crystal_11K.data): Initial atomic structure for the monoclinic phase (from PDF refinement), replicated 3×4×3 at runtime
-- `fine-tuned_mace-mp-0b3-medium_compiled.model-lammps.pt`: TorchScript-compiled fine-tuned MACE potential for use with LAMMPS
+- [`fine-tuned_mace-mp-0b3-medium_compiled.model-lammps.pt`](https://doi.org/10.5281/zenodo.18709769): TorchScript-compiled fine-tuned MACE potential for use with LAMMPS
 - [`lammps-gpu.sh`](./lammps-gpu.sh): SLURM batch job script for GPU-accelerated LAMMPS on Mahti
 
 ## Output Files
