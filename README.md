@@ -1,4 +1,4 @@
-# Supporting Code for “*Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in the Parent Compound of Ru-Pnictide Superconductor*”
+# Supporting Code for “*Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in the Parent Compound of Ru-Pnictide Superconductors*”
 
 ## Graphical Abstract
 
@@ -18,7 +18,7 @@
 
 ---
 
-This is the supporting code for the manuscript “***Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in the Parent Compound of Ru-Pnictide Superconductor***”. [DOI: TBA]
+This is the supporting code for the manuscript “***Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transition in the Parent Compound of Ru-Pnictide Superconductors***”. [DOI: TBA]
 
 The repository comprises the following sections:
 
