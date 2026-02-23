@@ -309,11 +309,7 @@ def compute_spatial_correlation(atoms, dimer_orders, ru_indices_list, ru_neighbo
     This matches trimerorder.get_space_correlation_all():
     - Includes ALL Ru neighbors within max_distance
     - EXCLUDES neighbors along [110] chains  
-    - Computes correlation binned by PERPENDICULAR distance (component of
-      the inter-atomic vector projected onto the plane perpendicular to [110]).
-      This is consistent with the parallel code which bins by the projection
-      along [110], and ensures the correlation length is not artificially
-      inflated by the long axis of the simulation box.
+    - Computes correlation in perpendicular directions
     """
     from scipy.ndimage import gaussian_filter
     
@@ -362,14 +358,10 @@ def compute_spatial_correlation(atoms, dimer_orders, ru_indices_list, ru_neighbo
             
             pos_j = ru_positions[j]
             
-            # Vector with PBC
+            # Distance with PBC
             vec_ij = pos_j - pos_i
             vec_ij = vec_ij - cell.T @ np.round(np.linalg.solve(cell.T, vec_ij))
-            
-            # Project out the [110] component to get the perpendicular distance
-            parallel_component = np.dot(vec_ij, direction_110_unit)
-            perp_vec = vec_ij - parallel_component * direction_110_unit
-            distance = np.linalg.norm(perp_vec)
+            distance = np.linalg.norm(vec_ij)
             
             if distance < 0.1 or distance > max_distance:
                 continue
@@ -482,10 +474,9 @@ def main():
         temperatures = args.temperatures
     else:
         temperatures = [
-            "10K", "50K", "100K", "150K", "200K", "250K", "300K"
-             "310K", "320K", "330K", "340K", "350K", "360K", "370K", 
-             "380K", "390K", "400K", "450K", "500K", "550K", "600K", 
-             "650K", "700K"
+            "10K", "50K", "100K", "150K", "200K", "250K", "300K", "310K",
+            "320K", "330K", "340K", "350K", "360K", "370K", "380K", "390K", "400K",
+            "450K", "500K", "550K", "600K", "650K", "700K"
         ]
     
     print(f"\nTemperatures to process: {len(temperatures)}")
