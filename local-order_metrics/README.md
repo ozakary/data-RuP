@@ -169,10 +169,10 @@ Run from `<root>/data_analysis_dense_sampling/correlation_functions/time_correla
 
 ```bash
 python3 compute_time_correlation.py \
-    -i ../../dimer_bond_order/ \
-    -o ./time_corr_data/ \
-    -pattern "dimer_order_*K.csv" \
-    -maxtime 400
+  -i ../../dimer_bond_order/ \
+  -o ./time_corr_data/ \
+  -pattern "dimer_order_*K.csv" \
+  -maxtime 101
 ```
 
 Computes the time auto-correlation function of the dimer bond order parameter from the data produced in Section 2.
@@ -184,18 +184,17 @@ Key arguments:
 | `-i` | `../../dimer_bond_order/` | Directory containing `dimer_order_{T}K.csv` files |
 | `-o` | `./time_corr_data/` | Output directory for correlation data |
 | `-pattern` | `dimer_order_*K.csv` | File pattern to match input CSV files |
-| `-maxtime` | 400 | Maximum lag time in frames |
+| `-maxtime` | 101 | Maximum lag time in frames |
 
 #### Step 2 — Plot
 
 ```bash
 python3 plot_time_correlation.py \
-    -i ./time_corr_data/ \
-    -o time_corr_plot \
-    --dt 0.05 \
-    --unit ps \
-    --xmax 5.0 \
-    --no-baseline
+  -i ./time_corr_data/ \
+  -o ./figures/dimer \
+  --tmax 2.0 \
+  --smooth-sigma 1.0 \
+  --show
 ```
 
 Key arguments:
@@ -204,10 +203,8 @@ Key arguments:
 |----------|-------|-------------|
 | `-i` | `./time_corr_data/` | Input directory with computed correlation data |
 | `-o` | `time_corr_plot` | Output figure filename (prefix) |
-| `--dt` | 0.05 | Time step between frames in ps (50 fs) |
-| `--unit` | `ps` | Time axis unit |
-| `--xmax` | 5.0 | Maximum time shown on x-axis (ps) |
-| `--no-baseline` | — | Do not subtract baseline from correlation curves |
+| `--tmax` | 2.0 | Fit C(t) only up to this time in ps (default: full range) |
+| `--smooth-sigma` | 1.0 | Gaussian smoothing sigma for FFT T_osc extraction in bins (default: 2.0, set 0 to disable) |
 
 #### Output
 
@@ -225,61 +222,32 @@ Key arguments:
 
 ---
 
-### 5.2 Space Correlation Functions (Perpendicular and Parallel)
+### 5.2 Space Correlation Function
 
 Run from `<root>/data_analysis_dense_sampling/correlation_functions/space_correlation/`:
 
-Two directional space correlation functions are computed: **perpendicular** (inter-chain) and **parallel** (along [110] Ru–Ru chains).
-
-#### Perpendicular (Inter-Chain) Correlation
-
 **Step 1 — Compute:**
 
 ```bash
 python3 compute_space_correlation_para-perp.py \
-    -parent ../../../ \
-    -i rup_traj_sampled-50_100ps \
-    -o ./space_corr_perp/ \
-    -delta 1.0 \
-    -start 0 \
-    -step 10 \
-    --max-distance 54
+  -parent ../../../ \
+  -i rup_traj_sampled-50_100ps \
+  -o ./space_corr_parallel_step-10/ \
+  -delta 1.0 \
+  -start 0 \
+  -step 10 \
+  --max-distance 25 \
+  --parallel
 ```
 
 **Step 2 — Plot:**
 
 ```bash
 python3 plot_space_correlation.py \
-    -i ./space_corr_perp/ \
-    -o space_corr_perp_plot \
-    --xmax 54 \
-    --xi-method envelope
-```
-
-#### Parallel (Along [110] Chains) Correlation
-
-**Step 1 — Compute:**
-
-```bash
-python3 compute_space_correlation_para-perp.py \
-    -parent ../../../ \
-    -i rup_traj_sampled-50_100ps \
-    -o ./space_corr_parallel/ \
-    -delta 1.0 \
-    -start 0 \
-    -step 10 \
-    --max-distance 25 \
-    --parallel
-```
-
-**Step 2 — Plot:**
-
-```bash
-python3 plot_space_correlation.py \
-    -i ./space_corr_parallel/ \
-    -o space_corr_parallel_plot \
-    --xmax 25 \
-    --xi-method envelope
+  -i ./space_corr_parallel_step-10/ \
+  -o space_corr_parallel_plot_step-10 \
+  --xmax 25 \
+  --rmax 18
 ```
 
 #### Key Arguments (compute)
@@ -301,20 +269,19 @@ python3 plot_space_correlation.py \
 |----------|-------|-------------|
 | `-i` | `./space_corr_perp/` or `./space_corr_parallel/` | Input directory |
 | `-o` | `space_corr_perp_plot` or `space_corr_parallel_plot` | Output figure prefix |
-| `--xmax` | 40 Å | Maximum distance shown on x-axis |
-| `--xi-method` | `envelope` | Method for extracting correlation length ξ (envelope fit) |
+| `--xmax` | 25 Å | Maximum distance shown on x-axis |
+| `--rmax` | 18 Å | Maximum distance for xi integration in A (default: full range). Use to exclude flat zero tail |
 
 #### Output
 
-- **Perpendicular space correlation function** C⊥(r) and its corresponding **correlation length** ξ⊥ for all temperatures
-- **Parallel space correlation function** C∥(r) and its corresponding **correlation length** ξ∥ for all temperatures
+- **Space correlation function** C(r) and its corresponding **correlation length** ξ for all temperatures
 
 ### Input / Output
 
 | | Path |
 |---|---|
 | **Input** (per temperature) | `../../../{T}K/lammps_out/rup_traj_sampled-50_100ps.xyz` |
-| **Intermediate** | `./space_corr_perp/` and `./space_corr_parallel/` |
+| **Intermediate** | `./space_corr_parallel/` |
 | **Output** | Space correlation function data and plots |
 
 ---
@@ -332,7 +299,7 @@ python3 plot_space_correlation.py \
 | [`code_trimer_bond_order_plot_vf.py`](./code_trimer_bond_order_plot_vf.py) | `trimer_bond_order/` | Computes and plots trimer bond order |
 | [`code_trimer_bond_order_plot_vf.py`](./code_trimer_bond_order_plot_vf.py) | `trimer_bond_order/` | Final-version plot of trimer bond order |
 | [`compute_time_correlation.py`](./compute_time_correlation.py) | `correlation_functions/time_correlation/` | Computes time auto-correlation of dimer bond order |
-| [`plot_time_correlation.py`](./plot_time_correlation.py) | `correlation_functions/time_correlation/` | Plots time auto-correlation, relaxation time, oscillation period |
+| [`plot_time_correlation.py`](./plot_time_correlation.py) | `correlation_functions/time_correlation/` | Plots time auto-correlation, relaxation time, oscillation period, and long-time plateau |
 | [`compute_space_correlation_para-perp.py`](./compute_space_correlation_para-perp.py) | `correlation_functions/space_correlation/` | Computes perpendicular and parallel space correlation functions |
 | [`plot_space_correlation.py`](./plot_space_correlation.py) | `correlation_functions/space_correlation/` | Plots space correlation functions and extracts correlation lengths |
 
