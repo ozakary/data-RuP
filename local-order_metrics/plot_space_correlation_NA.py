@@ -1,4 +1,4 @@
-#!/usr/bin/env python4
+#!/usr/bin/env python3
 """
 Plot space correlation functions and extract correlation length.
 Creates 3 separate plots: correlation curves and correlation length vs temperature.
