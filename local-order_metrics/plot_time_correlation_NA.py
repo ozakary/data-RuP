@@ -2,6 +2,7 @@
 """
 Plot time correlation functions and extract characteristic times.
 Creates 3 separate plots: correlation curves, relaxation times, C_inf plateau.
+Also gives diagonistics_*.png file for each temperature showing fitted vs original correlation function and the residual plot.
 
 Fits C(t) = A * exp(-t/tau) cos(\omega t + phi) + C_inf to extract tau; \omega is found from FFT to make the fitting more robust,  C_inf is extracted from the curve
 """
