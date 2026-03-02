@@ -205,6 +205,7 @@ def compute_dimer_order(atoms, ru_neighbor_graph, direction_110_unit):
             continue
         
         # Compute dimer order
+        #dimer_order = abs(d_23 - d_12) #no absolute value
         dimer_order = abs(d_23 - d_12)
         dimer_orders.append(dimer_order)
         ru_indices_list.append(ru_idx)
@@ -267,7 +268,9 @@ def compute_spatial_correlation_parallel(atoms, dimer_orders, ru_indices_list, r
                 vec = vec - cell.T @ np.round(np.linalg.solve(cell.T, vec))
                 
                 # Project along [110]
-                dist_along_110 = abs(np.dot(vec, direction_110_unit))
+                #dist_along_110 = abs(np.dot(vec, direction_110_unit))
+                #instead of the projection, use the real distance; this slightly increase the value of correlation length
+                dist_along_110 = np.linalg.norm(vec)
                 
                 if dist_along_110 > max_distance:
                     continue
@@ -295,7 +298,8 @@ def compute_spatial_correlation_parallel(atoms, dimer_orders, ru_indices_list, r
     correlation[mask] = correlation_sum[mask] / count[mask]
     
     # Apply Gaussian smoothing
-    correlation = gaussian_filter(correlation, sigma=1.0)
+    #do not apply Gaussian filter to the raw data; this can be done in the plotting script if necessary                  
+    #correlation = gaussian_filter(correlation, sigma=1.0)
     
     return correlation
 
