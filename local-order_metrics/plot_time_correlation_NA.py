@@ -581,7 +581,7 @@ def main():
         axs[0].legend()
         
         axs[1].plot(t, y-prediction,label="residual")
-        axs[1].text(0.85, 0.85, f"MAE: {MAE:6.4f}", transform=axs[1].transAxes) 
+        axs[1].text(0.80, 0.85, f"MAE: {MAE:6.4f}", transform=axs[1].transAxes) 
                     #horizontalalignment='right', verticalalignment='top',  fontsize=14, color='blue')
 
         axs[1].legend()
