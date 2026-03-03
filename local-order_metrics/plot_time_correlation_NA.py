@@ -429,7 +429,7 @@ def plot_omega(temperatures, omega_values, args):
     ax.set_xlabel(r'$T$ / K')
     ax.set_ylabel(r'$\omega$ / ' + args.omega_unit)
     ax.set_xlim(0, 750)
-    ax.set_ylim(0, 5)
+    ax.set_ylim(0, 30)
     ax.xaxis.set_major_locator(LinearLocator(numticks=4))
     ax.yaxis.set_major_locator(LinearLocator(numticks=6))
 
@@ -609,7 +609,8 @@ def main():
     plot_relaxation_time(temperatures, tau_values, tau_errors, args)
     plot_cinf(temperatures, cinf_values, cinf_errors, args)
     #plot_tosc(temperatures, tosc_values, args)
-    plot_omega(temperatures, freq_values_from_fft, args)
+    #to plot omega, need to multiply frequency by 2pi
+    plot_omega(temperatures, 2*np.pi*np.array(freq_values_from_fft), args)
 
     print("\n✓ All plots saved!")
     print("=" * 70)
