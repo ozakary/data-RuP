@@ -1,4 +1,4 @@
-# Supporting Code for “*Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transitions in the Parent Compound of Ru-Pnictide Superconductors*”
+# Supporting Code for “*Fine-Tuned Atomistic Foundation Model Uncovers Phase Transitions and Correlated Short-Range Disorder in the Parent Compound of Ru-Pnictide Superconductors*”
 
 ## Graphical Abstract
 
@@ -18,7 +18,7 @@
 
 ---
 
-This is the supporting code for the manuscript “***Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transitions in the Parent Compound of Ru-Pnictide Superconductors***”. [DOI: TBA]
+This is the supporting code for the manuscript “***Fine-Tuned Atomistic Foundation Model Uncovers Phase Transitions and Correlated Short-Range Disorder in the Parent Compound of Ru-Pnictide Superconductors***”. [DOI: TBA]
 
 The repository comprises the following sections:
 
@@ -38,7 +38,7 @@ If you use this data, please cite the following:
 
 ```bibtex
 @article{zakary_2025_rup_ml,
-  title={Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transitions in the Parent Compound of Ru-Pnictide Superconductors},
+  title={Fine-Tuned Atomistic Foundation Model Uncovers Phase Transitions and Correlated Short-Range Disorder in the Parent Compound of Ru-Pnictide Superconductors},
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
   journal={rXiv},
   year={2026},
@@ -53,7 +53,7 @@ If you use this data, please cite the following:
 ```bibtex
 @dataset{zakary_2025_data_rup_ml,
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
-  title = {Supporting Data for "Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transitions in the Parent Compound of Ru-Pnictide Superconductors"},
+  title = {Supporting Data for "Fine-Tuned Atomistic Foundation Model Uncovers Phase Transitions and Correlated Short-Range Disorder in the Parent Compound of Ru-Pnictide Superconductors"},
   year = {2026},
   publisher = {Zenodo},
   doi = {10.5281/zenodo.18709769},
@@ -65,7 +65,7 @@ If you use this data, please cite the following:
 ```bibtex
 @misc{zakary_2025_github_rup_ml,
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
-  title = {Supporting Code for "Fine-Tuned Atomistic Foundation Model Uncovers Short-Range Order and Phase Transitions in the Parent Compound of Ru-Pnictide Superconductors"},
+  title = {Supporting Code for "Fine-Tuned Atomistic Foundation Model Uncovers Phase Transitions and Correlated Short-Range Disorder in the Parent Compound of Ru-Pnictide Superconductors"},
   year = {2026},
   publisher = {GitHub},
   journal = {GitHub repository},
