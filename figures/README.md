@@ -1,4 +1,4 @@
-# Figures, Scripts, and Datasets for Manuscript and Supporting Information "*Fine-Tuned Atomistic Foundation Model Uncovers Phase Transitions and Short-Range Order in the Parent Compound of Ru-Pnictide Superconductors*"
+# Figures, Scripts, and Datasets for Manuscript and Supporting Information "*Fine-Tuned Atomistic Foundation Model Uncovers Phase Transitions and Short-Range Order in RuP*"
 ---
 📄 Author: **Ouail Zakary**
 - 📧 Email: [Ouail.Zakary@oulu.fi](mailto:Ouail.Zakary@oulu.fi)
@@ -6,7 +6,7 @@
 - 🌐 Website: [Personal Webpage](https://cc.oulu.fi/~nmrwww/members/Ouail_Zakary.html)
 - 📁 Portfolio: [Academic Portfolio](https://ozakary.github.io/)
 ---
-This folder contains the figures, Python scripts, datasets, and additional metadata (README files) used to generate the figures in the manuscript and supporting information documents of **"*Fine-Tuned Atomistic Foundation Model Uncovers Phase Transitions and Short-Range Order in the Parents Compound of Ru-Pnictide Superconductors*"**.
+This folder contains the figures, Python scripts, datasets, and additional metadata (README files) used to generate the figures in the manuscript and supporting information documents of **"*Fine-Tuned Atomistic Foundation Model Uncovers Phase Transitions and Short-Range Order in RuP*"**.
 
 ## Requirements
 
