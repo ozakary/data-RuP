@@ -217,7 +217,7 @@ def calculate_band_structure(temp_dir, temp_value):
 
 # Process your temperatures
 temperatures = {
-    '10K': 10,
+    '50K': 50,
 }
 
 print("="*50)
