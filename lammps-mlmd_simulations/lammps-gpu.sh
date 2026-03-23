@@ -1,25 +1,25 @@
-#!/bin/bash
-#SBATCH --account=plantto
-#SBATCH --partition=gpusmall
-#SBATCH --time=16:00:00
+#!/bin/bash -l
+#SBATCH --partition=standard-g
 #SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --gres=gpu:a100:1
+#SBATCH --ntasks-per-node=1
+#SBATCH --gpus-per-node=1
+#SBATCH --cpus-per-task=7
+#SBATCH --time=48:00:00
+#SBATCH --account=<project_ID>
 #SBATCH --output=test_lammps-gpu_%j.out
 #SBATCH --error=test_lammps-gpu_%j.err
 
-module purge
-module load gcc/11.2.0 openmpi/4.1.2 fftw/3.3.10-mpi cuda/11.5.0 cudnn/8.3.3.40-11.5 .unsupported intel-oneapi-mkl/2021.4.0
+ml LUMI
+ml partition/G
+ml PrgEnv-amd
+ml rocm
+ml cray-fftw
 
-# Set the installation directory of LAMMPS and libtorch
-LAMMPS_DIR=/projappl/plantto/zakaryou/LAMMPS-KOKKOS/lammps-mace
-LIBTORCH_DIR=/projappl/plantto/zakaryou/LAMMPS-KOKKOS/libtorch
-
-# Ensure the directory containing libtorch.so is included in the LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LIBTORCH_DIR/lib:$FFTW_INSTALL_ROOT/lib:$CUDA_INSTALL_ROOT/lib64:$LD_LIBRARY_PATH
-
-export PATH=$LAMMPS_DIR/bin:$PATH
-
+export MPICH_GPU_SUPPORT_ENABLED=1
 export OMP_NUM_THREADS=1
+export OMP_PROC_BIND=spread
+export OMP_PLACES=threads
+export LD_LIBRARY_PATH=/path/to/torch/lib/:$LD_LIBRARY_PATH
 
-srun -n 1 lmp -sf kk -k on g 4 -pk kokkos -in mono_lammps.in
+srun /path/to/lmp \
+  -in rup_mono_lammps.in -k on g 1 -sf kk -pk kokkos newton on neigh half
