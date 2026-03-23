@@ -32,7 +32,7 @@ To reproduce the figures and analyze the data, you will need the following softw
 |------------|------------|-------------|------------|
 | Figure 1 | `N/A` (VESTA + Inkscape) | `N/A` | [README](./figure_1_readme.txt) |
 | Figure 2 | [Script](./fig-2_code_plot.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_2_readme.txt) |
-| Figure 3 | [Script A](./fig-3a_code_compare_v4.py), [Script B](./fig-3b_code_compare_v4.py)| [README](./figure_3_readme.txt) |
+| Figure 3 | [Script A](./fig-3a_code_compare_v4.py), [Script B](./fig-3b_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_3_readme.txt) |
 | Figure 4 | [Script A](./fig-4ab_code_plots_unit_cell_norm_3.py), [Script B](./fig-4ab_code_plots_unit_cell_norm_3.py), [Script C](./fig-4c_code_compute_symm.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_4_readme.txt) |
 | Figure 5 | [Script A (RDF map)](../rdfs_and_structure-factors/code_plot_rdf_ru-ru_opt_with_inset_2d-map.py), [Script B (avg RDF map)](../rdfs_and_structure-factors/code_plot_avg_rdf_ru-ru_opt_with_inset_2d-map.py), [Script C (S(q) insta)](../rdfs_and_structure-factors/code_sq_plot.py), [Script D (S(q) avg)](../rdfs_and_structure-factors/code_sq_plot_avg.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_5_readme.txt) |
 | Figure 6 | [Script A (Ru–Ru distances)](../local-order_metrics/code_distances_plot_all-temps_kde_2d-map_vf3.py), [Script B (dimer bond order)](../local-order_metrics/code_dimer_bond_order_plot_vf.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_6_readme.txt) |
