@@ -44,14 +44,14 @@ Examples:
     parser.add_argument('-pattern', '--csv-pattern', default='trimer_order_*K.csv', type=str,
                         help='Pattern to match CSV files (default: trimer_order_*K.csv)')
     
-    parser.add_argument('-maxtime', '--max-time', default=400, type=int,
-                        help='Maximum time difference to record (default: 400 frames)')
+    parser.add_argument('-maxtime', '--max-time', default=1001, type=int,
+                        help='Maximum time difference to record (default: 1001 frames)')
     
     parser.add_argument('-temps', '--temperatures', nargs='+', default=None,
                         help='Specific temperatures to compute (default: all)')
     
-    parser.add_argument('--timestep-ps', default=0.05, type=float,
-                        help='Timestep in ps (default: 0.05)')
+    parser.add_argument('--timestep-ps', default=0.01, type=float,
+                        help='Timestep in ps (default: 0.01)')
     
     return parser.parse_args()
 
