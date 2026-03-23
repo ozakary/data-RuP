@@ -206,7 +206,7 @@ def compute_dimer_order(atoms, ru_neighbor_graph, direction_110_unit):
         
         # Compute dimer order
         #dimer_order = abs(d_23 - d_12) #no absolute value
-        dimer_order = abs(d_23 - d_12)
+        dimer_order = d_23 - d_12
         dimer_orders.append(dimer_order)
         ru_indices_list.append(ru_idx)
         ru_positions_list.append(pos_i.copy())
@@ -388,7 +388,7 @@ def compute_spatial_correlation(atoms, dimer_orders, ru_indices_list, ru_neighbo
     correlation[mask] = correlation_sum[mask] / count[mask]
     
     # Apply Gaussian smoothing
-    correlation = gaussian_filter(correlation, sigma=1.0)
+    #correlation = gaussian_filter(correlation, sigma=1.0)
     
     return correlation
 
@@ -401,7 +401,7 @@ def process_temperature(temp_dir, args):
         print(f"  ✗ Directory not found: {xyz_dir}")
         return None
     
-    pattern = f"*{args.input_pattern}*.xyz"
+    pattern = f"*{args.input_pattern}.xyz"
     matching_files = list(xyz_dir.glob(pattern))
     
     if len(matching_files) == 0:
@@ -468,7 +468,7 @@ def main():
     print("SPACE CORRELATION COMPUTATION (FAST METHOD)")
     print("="*70)
     print(f"\nParent directory: {args.parent_dir}")
-    print(f"File pattern: *{args.input_pattern}*.xyz")
+    print(f"File pattern: *{args.input_pattern}.xyz")
     print(f"Output directory: {args.output_dir}")
     print(f"Bin size (Δd): {args.delta_d} Å")
     print(f"Correlation direction: {'PARALLEL (along [110])' if args.parallel else 'PERPENDICULAR (to [110])'}")
@@ -478,9 +478,8 @@ def main():
         temperatures = args.temperatures
     else:
         temperatures = [
-            "10K", "50K", "100K", "150K", "200K", "250K", "300K", "310K",
-            "320K", "330K", "340K", "350K", "360K", "370K", "380K", "390K", "400K",
-            "450K", "500K", "550K", "600K", "650K", "700K"
+            "330K", "340K", "350K", "400K", "450K", "500K", "550K",
+            "600K", "650K", "700K" 
         ]
     
     print(f"\nTemperatures to process: {len(temperatures)}")
