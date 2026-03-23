@@ -1,1 +1,1 @@
-All correlation panels for Figure S9 (energy: E_monoclinic, E_orthorhombic, stress) are DFT vs. ML (fine-tuned MACE-MP-0b3) correlation plots, all generated using fig-1d_code_compare_v4.py. For each figure, the individual panels were assembled in Inkscape.
+Figure S9a-S9f (time auto-correlation function C(t) vs. fit) at the temperatures 250 K, 260 K, 270 K, 280 K, 290 K, and 300 K was generated using plot_time_correlation.py from local-order_metrics/correlation_functions/time_correlation/. All panels were assembled in Inkscape to form the complete figure.
