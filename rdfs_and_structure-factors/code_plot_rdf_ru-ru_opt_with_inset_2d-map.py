@@ -10,6 +10,7 @@ import seaborn as sns
 import hashlib
 import warnings
 import matplotlib.ticker as ticker
+from matplotlib.ticker import LinearLocator, FormatStrFormatter
 warnings.filterwarnings('ignore')
 
 # Import the figure_formatting module for consistent plotting style
@@ -259,6 +260,15 @@ def plot_2d_heatmap(temperature_patterns, output_dir='.', distance_range=(2.65, 
     cbar = plt.colorbar(im, ax=ax, label=r'$\langle G_{\text{insta}}(r) \rangle$')
     cbar.ax.yaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))
     cbar.ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+
+    # Set number of ticks
+    ax.xaxis.set_major_locator(LinearLocator(numticks=3))
+    ax.yaxis.set_major_locator(LinearLocator(numticks=6))
+
+    # Adding text    
+    ax.text(x=3.15, y=165, s='180 K', color='white', va='top', ha='left', rotation=0)
+    ax.text(x=3.40, y=380, s='330 K', color='white', va='top', ha='left', rotation=0)    
+#    ax.text(0.98, 0.98, 'Heating', transform=ax.transAxes, ha='right', va='top', color='white')   
     
     # Add horizontal dashed lines at specified temperatures
     for line_temp in horizontal_line_temps:
@@ -288,22 +298,29 @@ def main():
     
     # Configuration - Define the path patterns to the instantaneous RDF files for different temperatures
     temperature_patterns = {
-        '10 K': '../../10K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
         '50 K': '../../50K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
         '100 K': '../../100K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '110 K': '../../110K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '120 K': '../../120K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '130 K': '../../130K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '140 K': '../../140K/lammps_out/rdf_analysis/partial_rdfs.*.txt',                        
         '150 K': '../../150K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '160 K': '../../160K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '170 K': '../../170K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '180 K': '../../180K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '190 K': '../../190K/lammps_out/rdf_analysis/partial_rdfs.*.txt',                                
         '200 K': '../../200K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
         '250 K': '../../250K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '260 K': '../../260K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '270 K': '../../270K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '280 K': '../../280K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '290 K': '../../290K/lammps_out/rdf_analysis/partial_rdfs.*.txt',        
         '300 K': '../../300K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
         '310 K': '../../310K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
-        '320 K': '../../320K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '320 K': '../../320K/lammps_out/rdf_analysis/partial_rdfs.*.txt',       
         '330 K': '../../330K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
-        '340 K': '../../340K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
+        '340 K': '../../340K/lammps_out/rdf_analysis/partial_rdfs.*.txt',                
         '350 K': '../../350K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
-        '360 K': '../../360K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
-        '370 K': '../../370K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
-        '380 K': '../../380K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
-        '390 K': '../../390K/lammps_out/rdf_analysis/partial_rdfs.*.txt',                
         '400 K': '../../400K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
         '450 K': '../../450K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
         '500 K': '../../500K/lammps_out/rdf_analysis/partial_rdfs.*.txt',
@@ -329,7 +346,7 @@ def main():
     # Visualization settings
     colormap = 'RdBu_r'  # Try: 'Spectral_r', 'RdBu_r', 'RdYlBu_r', 'viridis', 'plasma', 'inferno', 'hot', 'coolwarm'
     figsize = (6, 6)
-    horizontal_line_temps = [320, 360]  # Temperatures for horizontal lines
+    horizontal_line_temps = [180, 330]  # Temperatures for horizontal lines
     
     # Create 2D heatmap (will use cache if available)
     fig, ax, Z, x_dist, temp_smooth = plot_2d_heatmap(
