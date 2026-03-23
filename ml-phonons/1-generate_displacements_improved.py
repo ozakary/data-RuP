@@ -12,7 +12,7 @@ def generate_phonopy_displacements(temp_dir, temp_value, displacement_distance=0
     Saves all displacements to a single multi-frame XYZ file
     """
     # Read the MACE-calculated average structure
-    avg_structure_file = f"./{temp_dir}/rup_traj_sampled-50_100ps_average_structure_{temp_value}K.xyz"
+    avg_structure_file = f"./{temp_dir}/rup_traj_sampled-10_100ps_average_structure_{temp_value}K.xyz"
     
     print(f"\nProcessing {temp_dir} ({temp_value}K):")
     
@@ -90,30 +90,36 @@ def generate_phonopy_displacements(temp_dir, temp_value, displacement_distance=0
 
 # Generate displacements for all temperatures
 temperatures = {
-    '10K': 10,
     '50K': 50,
     '100K': 100,
+    '110K': 110,
+    '120K': 120,
+    '130K': 130,
+    '140K': 140,
     '150K': 150,
+    '160K': 160,
+    '170K': 170,
+    '180K': 180,
+    '190K': 190,
     '200K': 200,
     '250K': 250,
+    '260K': 260,
+    '270K': 270,
+    '280K': 280,
+    '290K': 290,
     '300K': 300,
     '310K': 310,
     '320K': 320,
     '330K': 330,
     '340K': 340,
     '350K': 350,
-    '360K': 360,
-    '370K': 370,
-    '380K': 380,
-    '390K': 390,
     '400K': 400,
     '450K': 450,
     '500K': 500,
     '550K': 550,
     '600K': 600,
     '650K': 650,
-    '700K': 700,
-    
+    '700K': 700
 }
 
 print("="*50)
