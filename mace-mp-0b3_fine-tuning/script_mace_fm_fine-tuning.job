@@ -28,49 +28,50 @@ ulimit -s unlimited
 # Start of training the MACE architecture :
 
 mace_run_train \
-	--name="fine-tuned_mace-mp-0b3-medium" \
-	--foundation_model="./mace-mp-0b3-medium.model" \
-	--multiheads_finetuning=False \
-	--train_file="./dataset/rup_dataset_train.xyz" \
-	--valid_file="./dataset/rup_dataset_valid.xyz" \
-	--test_file="./dataset/rup_dataset_test.xyz" \
-       	--loss="universal" \
-       	--energy_weight=1 \
-	--forces_weight=10 \
-	--compute_stress=True \
-	--compute_forces=True \
-	--compute_avg_num_neighbors=True \
-	--stress_weight=100 \
-	--stress_key='REF_stress' \
-	--eval_interval=1 \
-	--error_table='PerAtomMAE' \
-	--interaction_first="RealAgnosticResidualInteractionBlock" \
-	--interaction="RealAgnosticResidualInteractionBlock" \
-	--num_interactions=2 \
-	--correlation=3 \
-	--max_ell=3 \
-	--r_max=6.0 \
-	--max_L=2 \
-	--num_channels=128 \
-	--num_radial_basis=10 \
-	--MLP_irreps="16x0e" \
-	--scaling='rms_forces_scaling' \
-	--lr=0.005 \
-	--weight_decay=1e-8 \
-       	--ema \
-	--ema_decay=0.995 \
-	--scheduler_patience=5 \
-	--batch_size=2 \
-	--valid_batch_size=4 \
-	--max_num_epochs=1000 \
-	--patience=30 \
-	--amsgrad \
-	--device="cuda" \
-	--default_dtype="float64" \
-	--seed=3 \
-	--clip_grad=100 \
-	--E0s="average" \
+        --name="fine-tuned_mace-mp-0b3-medium_vf" \
+        --foundation_model="./mace-mp-0b3-medium.model" \
+        --multiheads_finetuning=False \
+        --train_file="./dataset/rup_dataset_train.xyz" \
+        --valid_file="./dataset/rup_dataset_valid.xyz" \
+        --test_file="./dataset/rup_dataset_test.xyz" \
+        --atomic_numbers "[15, 44]" \
+        --E0s="{15: -0.01998124, 44: -0.13979238}" \
+        --loss="universal" \
+        --energy_weight=1 \
+        --forces_weight=10 \
+        --compute_stress=True \
+        --compute_forces=True \
+        --compute_avg_num_neighbors=True \
+        --stress_weight=100 \
+        --stress_key='REF_stress' \
+        --eval_interval=1 \
+        --error_table='PerAtomMAE' \
+        --interaction_first="RealAgnosticResidualInteractionBlock" \
+        --interaction="RealAgnosticResidualInteractionBlock" \
+        --num_interactions=2 \
+        --correlation=3 \
+        --max_ell=3 \
+        --r_max=6.0 \
+        --max_L=2 \
+        --num_channels=128 \
+        --num_radial_basis=10 \
+        --MLP_irreps="16x0e" \
+        --scaling='rms_forces_scaling' \
+        --lr=0.005 \
+        --weight_decay=1e-8 \
+        --ema \
+        --ema_decay=0.995 \
+        --scheduler_patience=5 \
+        --batch_size=2 \
+        --valid_batch_size=4 \
+        --max_num_epochs=1000 \
+        --patience=30 \
+        --amsgrad \
+        --device="cuda" \
+        --default_dtype="float64" \
+        --seed=3 \
+        --clip_grad=100 \
         --enable_cueq=True \
-	--restart_latest
+        --restart_latest
 
 exit 0
