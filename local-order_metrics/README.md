@@ -107,6 +107,7 @@ Run from `<root>/data_analysis/trimer_angle_order/`:
 
 ```bash
 python3 code_trimer_angle_order_compute_v2.py
+python3 fix_population_tracking.py
 ```
 
 Computes the trimer angle order parameter from the MLMD trajectories for all temperatures.
@@ -300,8 +301,9 @@ python3 plot_space_correlation.py \
 | [`code_distances_plot_all-temps_kde_2d-map_vf3.py`](./code_distances_plot_all-temps_kde_2d-map_vf3.py) | `ru-ru_along-110-direction_vs_time_and_distr/` | Plots KDE distributions and 2D maps |
 | [`code_dimer_bond_order_compute.py`](./code_dimer_bond_order_compute.py) | `dimer_bond_order/` | Computes dimer bond order parameter |
 | [`code_dimer_bond_order_plot_vf.py`](./code_dimer_bond_order_plot_vf.py) | `dimer_bond_order/` | Plots dimer bond order |
-| [`code_trimer_angle_order_compute_v2.py`](./code_trimer_angle_order_compute_v2.py) | `trimer_angle_order_dashed-curves/` | Computes trimer angle order parameter |
-| [`code_trimer_angle_order_plot_vf.py`](./code_trimer_angle_order_plot_vf.py) | `trimer_angle_order_dashed-curves/` | Plots trimer angle order |
+| [`code_trimer_angle_order_compute_v2.py`](./code_trimer_angle_order_compute_v2.py) | `trimer_angle_order/` | Computes trimer angle order parameter |
+| [`fix_population_tracking.py`](./fix_population_tracking.py) | `trimer_angle_order/` | To fix the population assignements |
+| [`code_trimer_angle_order_plot_vf.py`](./code_trimer_angle_order_plot_vf.py) | `trimer_angle_order/` | Plots trimer angle order |
 | [`code_trimer_bond_order_plot_vf.py`](./code_trimer_bond_order_plot_vf.py) | `trimer_bond_order/` | Computes and plots trimer bond order |
 | [`code_trimer_bond_order_plot_vf.py`](./code_trimer_bond_order_plot_vf.py) | `trimer_bond_order/` | Final-version plot of trimer bond order |
 | [`compute_time_correlation.py`](./compute_time_correlation.py) | `correlation_functions/time_correlation/` | Computes time auto-correlation of dimer bond order |
