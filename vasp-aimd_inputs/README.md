@@ -48,8 +48,8 @@ AIMD simulations were performed independently for each phase at the following te
 
 | Phase | Temperatures |
 |-------|-------------|
-| **Monoclinic** | 11 K, 100 K, 200 K, 250 K, 270 K, 300 K |
-| **Orthorhombic** | 300 K, 370 K, 400 K, 450 K |
+| **Monoclinic** | 11 K, 50 K, 100 K, 150 K, 200 K, 250 K, 270 K, 300 K |
+| **Orthorhombic** | 200 K, 250 K, 300 K, 330 K, 350 K, 400 K, 450 K, 500 K |
 
 Each simulation run consists of 500 ionic steps (1 fs timestep), with multiple consecutive runs chained together via the job script (i.e., the `CONTCAR` from one run is used as the `POSCAR` for the next). The trajectory data accumulates across runs via incrementally backed-up `XDATCAR` files.
 
