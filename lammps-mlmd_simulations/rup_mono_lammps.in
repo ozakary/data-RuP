@@ -1,0 +1,85 @@
+units metal
+atom_style atomic
+atom_modify map yes
+dimension 3
+newton on
+boundary p p p
+
+# Read initial structure
+read_data ../monoclinic_pdf_refinement_single_crystal_11K.data
+
+# Create supercell
+replicate 4 5 2
+
+# Convert box to triclinic to allow angle changes
+change_box all triclinic
+
+# MACE pair style
+pair_style mace no_domain_decomposition
+pair_coeff * * ../../fine-tuned_mace-mp-0b3-medium_vf_compiled.model-lammps.pt Ru P
+mass 1 101.07
+mass 2 30.973761
+
+# Set temperature (modify this value for each job)
+variable TEMP equal 50.0
+
+# Initialize velocities
+velocity all create ${TEMP} 123456
+
+# Neighbor list settings
+neighbor 1.0 bin
+neigh_modify delay 5 every 1
+
+# Simulation timestep (1 fs)
+timestep 0.001
+
+#===============================================
+# STAGE 1: EQUILIBRATION (10 ps at TEMP, NpT)
+#===============================================
+
+print "Starting equilibration (10 ps at TEMP, 1 atm NpT)..."
+
+thermo 10
+thermo_style custom step temp press pe ke etotal vol lx ly lz xy xz yz
+
+fix 1 all npt temp ${TEMP} ${TEMP} $(100.0*dt) tri 0.0 0.0 $(1000.0*dt)
+
+dump myDump_eq all custom 10 equilibration.dump id type x y z
+dump_modify myDump_eq sort id
+
+run 10000
+
+undump myDump_eq
+
+unfix 1
+print "Equilibration completed."
+
+#===============================================
+# STAGE 2: PRODUCTION RUN (100 ps at TEMP, NpT)
+#===============================================
+
+print "Starting production run (100 ps at TEMP, 1 atm NpT)..."
+
+# Thermo output with all lattice information
+thermo 10
+thermo_style custom step temp press pe ke etotal vol lx ly lz xy xz yz
+
+# CRITICAL: Use triclinic (tri) for fully flexible cell
+fix 1 all npt temp ${TEMP} ${TEMP} $(100.0*dt) tri 0.0 0.0 $(1000.0*dt)
+
+# Output lattice parameters every 10 steps
+fix lattice_output all print 10 "$(step) $(temp) $(press) $(vol) $(lx) $(ly) $(lz) $(xy) $(xz) $(yz)" &
+    file lattice_params.dat screen no
+
+# Dump trajectory (optional - remove if files get too large)
+dump myDump all custom 10 trajectory.dump id type x y z
+dump_modify myDump sort id
+
+# Restart files
+restart 1000 tmp.restart
+
+# Run for 100 ps (100000 steps with 1 fs timestep)
+run 100000
+
+# Write final configuration
+write_data final_config.data
