@@ -18,7 +18,7 @@ For each AIMD temperature folder (for both monoclinic and orthorhombic phases), 
 
 ```bash
 for i in $(seq 1 1 10); do
-    ase convert OUTCAR.${i} rup_traj_${i}.xyz
+    ase convert OUTCAR.${i} traj_${i}.xyz
 done
 ```
 
@@ -29,81 +29,82 @@ This produces 10 XYZ trajectory files per temperature, each containing 500 ionic
 The 10 trajectory files are concatenated into a single XYZ file per temperature:
 
 ```bash
-cat rup_traj_1.xyz rup_traj_2.xyz ... rup_traj_10.xyz \
-    > monoclinic_11K_NpT_DFTD4_ML-dataset.xyz
+cat traj_1.xyz traj_2.xyz ... traj_10.xyz \
+    > mono_NpT_PBE-D4_traj-5ps_11K.xyz
 ```
 
-This results in a full trajectory of **5000 configurations (5 ps)** per temperature. The same procedure is repeated for each of the 10 AIMD temperatures:
+This results in a full trajectory of **5000 configurations (5 ps)** per temperature. The same procedure is repeated for each of the 16 AIMD temperatures:
 
 | Phase | Temperature | Full Dataset File |
 |-------|-------------|-------------------|
-| Monoclinic | 11 K | `monoclinic_11K_NpT_DFTD4_ML-dataset.xyz` |
-| Monoclinic | 100 K | `monoclinic_100K_NpT_DFTD4_ML-dataset.xyz` |
-| Monoclinic | 200 K | `monoclinic_200K_NpT_DFTD4_ML-dataset.xyz` |
-| Monoclinic | 250 K | `monoclinic_250K_NpT_DFTD4_ML-dataset.xyz` |
-| Monoclinic | 270 K | `monoclinic_270K_NpT_DFTD4_ML-dataset.xyz` |
-| Monoclinic | 300 K | `monoclinic_300K_NpT_DFTD4_ML-dataset.xyz` |
-| Orthorhombic | 300 K | `orthorhombic_300K_NpT_DFTD4_ML-dataset.xyz` |
-| Orthorhombic | 370 K | `orthorhombic_370K_NpT_DFTD4_ML-dataset.xyz` |
-| Orthorhombic | 400 K | `orthorhombic_400K_NpT_DFTD4_ML-dataset.xyz` |
-| Orthorhombic | 450 K | `orthorhombic_450K_NpT_DFTD4_ML-dataset.xyz` |
+| Monoclinic | 11 K | `mono_NpT_PBE-D4_traj-5ps_11K.xyz` |
+| Monoclinic | 50 K | `mono_NpT_PBE-D4_traj-5ps_50K.xyz` |
+| Monoclinic | 100 K | `mono_NpT_PBE-D4_traj-5ps_100K.xyz` |
+| Monoclinic | 150 K | `mono_NpT_PBE-D4_traj-5ps_150K.xyz` |
+| Monoclinic | 200 K | `mono_NpT_PBE-D4_traj-5ps_200K.xyz` |
+| Monoclinic | 250 K | `mono_NpT_PBE-D4_traj-5ps_250K.xyz` |
+| Monoclinic | 270 K | `mono_NpT_PBE-D4_traj-5ps_270K.xyz` |
+| Monoclinic | 300 K | `mono_NpT_PBE-D4_traj-5ps_300K.xyz` |
+| Orthorhombic | 200 K | `ortho_NpT_PBE-D4_traj-5ps_200K.xyz` |
+| Orthorhombic | 250 K | `ortho_NpT_PBE-D4_traj-5ps_250K.xyz` |
+| Orthorhombic | 300 K | `ortho_NpT_PBE-D4_traj-5ps_300K.xyz` |
+| Orthorhombic | 330 K | `ortho_NpT_PBE-D4_traj-5ps_330K.xyz` |
+| Orthorhombic | 350 K | `ortho_NpT_PBE-D4_traj-5ps_350K.xyz` |
+| Orthorhombic | 400 K | `ortho_NpT_PBE-D4_traj-5ps_400K.xyz` |
+| Orthorhombic | 450 K | `ortho_NpT_PBE-D4_traj-5ps_450K.xyz` |
+| Orthorhombic | 500 K | `ortho_NpT_PBE-D4_traj-5ps_500K.xyz` |
 
 ---
 
 ## Stage 2 — Dataset Sampling and Splitting
 
-### 2.1 Subsample Trajectories (Every 10 Steps)
+### 2.1 Concatenate All Datasets
 
-To reduce redundancy and decorrelate configurations, each per-temperature dataset is subsampled by retaining every 10th ionic step, reducing 5000 frames to **500 frames** per temperature:
-
-```bash
-python3 sampling_data.py
-```
-
-The script [`sampling_data.py`](./sampling_data.py) reads the full XYZ trajectory and writes the subsampled output with the prefix `sampled-2_`:
-
-| Phase | Temperature | Sampled Dataset File |
-|-------|-------------|----------------------|
-| Monoclinic | 11 K | `sampled-2_monoclinic_11K_NpT_DFTD4_ML-dataset.xyz` |
-| Monoclinic | 100 K | `sampled-2_monoclinic_100K_NpT_DFTD4_ML-dataset.xyz` |
-| Monoclinic | 200 K | `sampled-2_monoclinic_200K_NpT_DFTD4_ML-dataset.xyz` |
-| Monoclinic | 250 K | `sampled-2_monoclinic_250K_NpT_DFTD4_ML-dataset.xyz` |
-| Monoclinic | 270 K | `sampled-2_monoclinic_270K_NpT_DFTD4_ML-dataset.xyz` |
-| Monoclinic | 300 K | `sampled-2_monoclinic_300K_NpT_DFTD4_ML-dataset.xyz` |
-| Orthorhombic | 300 K | `sampled-2_orthorhombic_300K_NpT_DFTD4_ML-dataset.xyz` |
-| Orthorhombic | 370 K | `sampled-2_orthorhombic_370K_NpT_DFTD4_ML-dataset.xyz` |
-| Orthorhombic | 400 K | `sampled-2_orthorhombic_400K_NpT_DFTD4_ML-dataset.xyz` |
-| Orthorhombic | 450 K | `sampled-2_orthorhombic_450K_NpT_DFTD4_ML-dataset.xyz` |
-
-### 2.2 Concatenate All Sampled Datasets
-
-All 10 subsampled trajectories (monoclinic + orthorhombic, all temperatures) are merged into a single master dataset file:
+All 16 trajectories (monoclinic + orthorhombic, all temperatures) are merged into a single master dataset file:
 
 ```bash
-cat sampled-2_monoclinic_11K_NpT_DFTD4_ML-dataset.xyz \
-    sampled-2_monoclinic_100K_NpT_DFTD4_ML-dataset.xyz \
-    sampled-2_monoclinic_200K_NpT_DFTD4_ML-dataset.xyz \
-    sampled-2_monoclinic_250K_NpT_DFTD4_ML-dataset.xyz \
-    sampled-2_monoclinic_270K_NpT_DFTD4_ML-dataset.xyz \
-    sampled-2_monoclinic_300K_NpT_DFTD4_ML-dataset.xyz \
-    sampled-2_orthorhombic_300K_NpT_DFTD4_ML-dataset.xyz \
-    sampled-2_orthorhombic_370K_NpT_DFTD4_ML-dataset.xyz \
-    sampled-2_orthorhombic_400K_NpT_DFTD4_ML-dataset.xyz \
-    sampled-2_orthorhombic_450K_NpT_DFTD4_ML-dataset.xyz \
-    > sampled-2_mono_and_ortho_all_NpT_DFTD4_ML-dataset.xyz
+cat mono_NpT_PBE-D4_traj-5ps_11K.xyz \
+    mono_NpT_PBE-D4_traj-5ps_50K.xyz \
+    mono_NpT_PBE-D4_traj-5ps_100K.xyz \
+    mono_NpT_PBE-D4_traj-5ps_150K.xyz \
+    mono_NpT_PBE-D4_traj-5ps_200K.xyz \
+    mono_NpT_PBE-D4_traj-5ps_250K.xyz \
+    mono_NpT_PBE-D4_traj-5ps_270K.xyz \
+    mono_NpT_PBE-D4_traj-5ps_300K.xyz \
+    ortho_NpT_PBE-D4_traj-5ps_200K.xyz \
+    ortho_NpT_PBE-D4_traj-5ps_250K.xyz \
+    ortho_NpT_PBE-D4_traj-5ps_300K.xyz \
+    ortho_NpT_PBE-D4_traj-5ps_330K.xyz \
+    ortho_NpT_PBE-D4_traj-5ps_350K.xyz \
+    ortho_NpT_PBE-D4_traj-5ps_400K.xyz \
+    ortho_NpT_PBE-D4_traj-5ps_450K.xyz \
+    ortho_NpT_PBE-D4_traj-5ps_500K.xyz \
+    > mono_and_ortho_all-temps_NpT_PBE-D4_full-traj.xyz
 ```
 
-The master dataset contains **5000 configurations** spanning both phases and all simulation temperatures.
+The master dataset contains **80000 configurations** spanning both phases and all simulation temperatures.
+
+### 2.2 Sample Trajectories (Every 10 Steps)
+
+To reduce redundancy and decorrelate configurations, the master dataset file is sampled by retaining every 10th ionic step, reducing 80000 frames to **8000 frames**:
+
+For this task, we used the code: [`trajslicer_src.py`](https://github.com/ozakary/TrajSlicer/blob/main/trajslicer_src.py)
+
+```bash
+python3 trajslicer_src.py mono_and_ortho_all-temps_NpT_PBE-D4_full-traj.xyz mono_and_ortho_all-temps_NpT_PBE-D4_sampled-10fs-traj_ML-dataset.xyz --sample 10
+```
+
+The master sampled dataset file `mono_and_ortho_all-temps_NpT_PBE-D4_sampled-10fs-traj_ML-dataset.xyz` contains **8000 configurations**.
 
 ### 2.3 Split into Train / Validation / Test Sets
 
-The master dataset is split into training, validation, and test subsets using [`xyz_splitter.py`](./dataset/xyz_splitter.py). The split is performed randomly with a fixed random seed for reproducibility:
+The master sampled dataset is split into training, validation, and test subsets using [`xyz_splitter.py`](./dataset/xyz_splitter.py). The split is performed randomly with a fixed random seed for reproducibility:
 
 ```bash
-python3 xyz_splitter.py sampled-2_mono_and_ortho_all_NpT_DFTD4_ML-dataset.xyz \
-    --train_size 1600 \
-    --valid_size 200 \
-    --test_size 200 \
+python3 xyz_splitter.py mono_and_ortho_all-temps_NpT_PBE-D4_sampled-10fs-traj_ML-dataset.xyz \
+    --train_size 6400 \
+    --valid_size 800 \
+    --test_size 800 \
     --rand_split true \
     --output_prefix rup_dataset \
     --seed 123
@@ -111,9 +112,9 @@ python3 xyz_splitter.py sampled-2_mono_and_ortho_all_NpT_DFTD4_ML-dataset.xyz \
 
 | Split | Size | Output File |
 |-------|------|-------------|
-| Training | 1,600 configurations | `rup_dataset_train.xyz` |
-| Validation | 200 configurations | `rup_dataset_valid.xyz` |
-| Test | 200 configurations | `rup_dataset_test.xyz` |
+| Training | 6,400 configurations | `rup_dataset_train.xyz` |
+| Validation | 800 configurations | `rup_dataset_valid.xyz` |
+| Test | 800 configurations | `rup_dataset_test.xyz` |
 
 ---
 
@@ -126,7 +127,7 @@ python3 xyz_splitter.py sampled-2_mono_and_ortho_all_NpT_DFTD4_ML-dataset.xyz \
 ├── dataset/
 │   ├── sampling_data.py
 │   ├── xyz_splitter.py
-│   ├── sampled-2_mono_and_ortho_all_NpT_DFTD4_ML-dataset.xyz
+│   ├── mono_and_ortho_all-temps_NpT_PBE-D4_sampled-10fs-traj_ML-dataset.xyz
 │   ├── rup_dataset_train.xyz
 │   ├── rup_dataset_valid.xyz
 │   └── rup_dataset_test.xyz
@@ -206,7 +207,8 @@ Key hyperparameters and architectural settings used in `mace_run_train`:
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| `--E0s` | `average` | Atomic energy references (averaged) |
+| `--atomic_numbers` | `"[15, 44]"` | Atomic numbers for P and Ru, respectively |
+| `--E0s` | `"{15: -0.01998124, 44: -0.13979238}"` | Atomic energy references |
 | `--enable_cueq` | `True` | Enable CuEq for GPU-accelerated equivariant ops |
 | `--restart_latest` | — | Resume training from the latest checkpoint |
 
@@ -225,16 +227,16 @@ Key hyperparameters and architectural settings used in `mace_run_train`:
 
 Upon completion, `mace_run_train` produces the following files in the fine-tuning directory:
 
-- `fine-tuned_mace-mp-0b3-medium.model`: Final fine-tuned model (float64 precision)
-- `fine-tuned_mace-mp-0b3-medium_compiled.model`: Torch-compiled model for deployment
-- `fine-tuned_mace-mp-0b3-medium_run-{n}.log`: Training log with per-epoch metrics
+- `fine-tuned_mace-mp-0b3-medium_vf.model`: Final fine-tuned model (float64 precision)
+- `fine-tuned_mace-mp-0b3-medium_vf_compiled.model`: Torch-compiled model for deployment
+- `fine-tuned_mace-mp-0b3-medium_vf_run-{n}.log`: Training log with per-epoch metrics
 - `checkpoints/`: Directory containing model checkpoints saved during training
 
 ## Input Files
 
-- [`sampling_data.py`](./dataset/sampling_data.py): Script to subsample AIMD trajectories (every 10th step)
+- [`trajslicer_src.py`](https://github.com/ozakary/TrajSlicer/blob/main/trajslicer_src.py): Script to sample AIMD trajectories (every 10th step)
 - [`xyz_splitter.py`](./dataset/xyz_splitter.py): Script to randomly split the master XYZ dataset into train/validation/test sets
-- [`sampled-2_mono_and_ortho_all_NpT_DFTD4_ML-dataset.xyz`](https://doi.org/10.5281/zenodo.18709769): XYZ dataset (all phases and temperatures, subsampled)
+- [`mono_and_ortho_all-temps_NpT_PBE-D4_sampled-10fs-traj_ML-dataset.xyz`](https://doi.org/10.5281/zenodo.18709769): XYZ dataset (all phases and temperatures, subsampled)
 - [`mace-mp-0b3-medium.model`](./https://github.com/ACEsuit/mace-foundations/releases/tag/mace_mp_0b3): Pre-trained MACE-MP-0b3 foundation model (medium size)
 - [`script_mace_fm_fine-tuning.job`](./script_mace_fm_fine-tuning.job): SLURM batch job script for fine-tuning on Mahti
 
