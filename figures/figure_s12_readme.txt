@@ -1,0 +1,1 @@
+Figure S12 (FFT of C(r) and correlation length ξ_oz) at the full temperature range was generated using plot_space_correlation.py from local-order_metrics/correlation_functions/space_correlation/. All panels were assembled in Inkscape to form the complete figure.
