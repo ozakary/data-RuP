@@ -1,1 +1,1 @@
-All correlation panels for Figure S4 (stress tensor components: s_xx, s_yy, s_zz, s_xy, s_xz, s_yz) are DFT vs. ML (Allegro) correlation plots, all generated using fig-1b_code_compare_v4.py. For each figure, the individual panels were assembled in Inkscape.
+All three correlation panels for Figure S4 (stress tensor components) are DFT vs. ML (MACE-MP-0b3) correlation plots, all generated using fig-3a_code_compare_v4.py. For each figure, the individual panels were assembled in Inkscape.
