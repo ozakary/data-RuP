@@ -67,7 +67,7 @@ def parse_xyz_file(filename):
 
 # Parse the XYZ file
 print("Parsing XYZ file...")
-energies, forces, stresses = parse_xyz_file('./rup_dataset_all.xyz')
+energies, forces, stresses = parse_xyz_file("./mono_and_ortho_all-temps_NpT_PBE-D4_sampled-10fs-traj_ML-dataset.xyz")
 
 print(f"\nData extracted:")
 print(f"  Number of structures: {len(energies)}")
