@@ -77,7 +77,7 @@ def classify_spacegroup(sg_string):
     if sg_string is None:
         return "$P1$ (1)"
     if "14" in sg_string:
-        return "$P2_1/a$ (14)"
+        return "$P2_1/c$ (14)"
     if "62" in sg_string:
         return "$Pnma$ (62)"
     if " (4)" in sg_string:
@@ -89,7 +89,7 @@ def classify_spacegroup(sg_string):
 
 # ---- Colour map for space groups ----
 SPACEGROUP_COLORS = {
-    "$P2_1/a$ (14)": "#2A9D8F",   # teal   — monoclinic
+    "$P2_1/c$ (14)": "#2A9D8F",   # teal   — monoclinic
     "$Pnma$ (62)":   "#E9C46A",   # gold    — orthorhombic
     "$P2_1$ (4)":    "#E76F51",   # orange  — intermediate
     "$P1$ (1)":      "#9E9E9E",   # grey   — no symmetry
@@ -297,7 +297,7 @@ def plot_symmetry_map(results, existing_temps, tolerances, output_dir="."):
     ax.set_ylim(0, n_temps * row_height)
 
     # Legend at the bottom
-    preferred_order = ["$P1$ (1)", "$P2_1$ (4)", "$P2_1/a$ (14)", "$Pnma$ (62)"]
+    preferred_order = ["$P1$ (1)", "$P2_1$ (4)", "$P2_1/c$ (14)", "$Pnma$ (62)"]
     ordered_labels  = [sg for sg in preferred_order if sg in all_sg_labels]
     ordered_labels += [sg for sg in all_sg_labels   if sg not in preferred_order]
 
