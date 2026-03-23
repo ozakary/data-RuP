@@ -1,0 +1,1 @@
+The panels (a-d) and (e-h) in Figure 3 correspond to the ML-predicted (DFT-calculation) correlation plots from the MACE-MP-0b3 and the fine-tuned MACE-MP-0b3 AFMs, respectively. The codes used to plot (a-d) and (e-h) are fig-3a_code_compare_v4.py and fig-3b_code_compare_v4.py, respectively.
