@@ -4,8 +4,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gpus-per-node=1
-#SBATCH --time=18:00:00
-#SBATCH --account=project_462001159
+#SBATCH --time=48:00:00
+#SBATCH --account=<project_ID>
 #SBATCH --output=mlp-predict_%j.out
 #SBATCH --error=mlp-predict_%j.err
 #SBATCH --get-user-env
@@ -24,9 +24,9 @@ ulimit -s unlimited
 # Start of training the MACE architecture :
 
 python3 2-batch_mace_forces_improved.py \
-    -m ./fine-tuned_mace-mp-0b3-medium_compiled.model \
-    -i 10K/displaced_structures/all_displaced_structures.xyz \
-    -o 10K/displaced_structures/all_displaced_structures_out.xyz \
+    -m ./fine-tuned_mace-mp-0b3-medium_vf_compiled.model \
+    -i 50K/displaced_structures/all_displaced_structures.xyz \
+    -o 50K/displaced_structures/all_displaced_structures_out.xyz \
     -dtype float64 \
     --save-frequency 1
 
