@@ -11,7 +11,7 @@ import figure_formatting as ff
 ff.set_rcParams(ff.master_formatting)
 
 
-def calculate_lattice_properties(lx, ly, lz, xy, xz, yz, supercell=(3, 4, 3)):
+def calculate_lattice_properties(lx, ly, lz, xy, xz, yz, supercell=(4, 5, 2)):
     """
     Calculate lattice parameters and angles from LAMMPS triclinic representation
     and convert from supercell to unit cell parameters
@@ -42,7 +42,7 @@ def calculate_lattice_properties(lx, ly, lz, xy, xz, yz, supercell=(3, 4, 3)):
     
     return a, b, c, alpha, beta, gamma
 
-def analyze_temperature_data(supercell=(3, 4, 3)):
+def analyze_temperature_data(supercell=(4, 5, 2)):
     """
     Analyze lattice parameters for all temperatures
     
@@ -51,7 +51,7 @@ def analyze_temperature_data(supercell=(3, 4, 3)):
     supercell : tuple
         Supercell dimensions (na, nb, nc)
     """
-    temperatures = [10, 50, 100, 150, 200, 250, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 450, 500, 550, 600, 650, 700]
+    temperatures = [50, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 400, 450, 500, 550, 600, 650, 700]
     results = []
     
     print(f"Converting from {supercell[0]}×{supercell[1]}×{supercell[2]} supercell to unit cell")
@@ -107,7 +107,7 @@ def analyze_temperature_data(supercell=(3, 4, 3)):
             
             # Use last 20% of simulation for analysis (equilibrated region)
             n_total = len(lattice_props)
-            n_equilibrated = int(n_total * 0.2)
+            n_equilibrated = int(n_total * 0.0)
             equilibrated_props = lattice_props[n_equilibrated:]
             
             print(f"  Using {len(equilibrated_props)} equilibrated frames out of {n_total} total")
@@ -135,8 +135,8 @@ def analyze_temperature_data(supercell=(3, 4, 3)):
     
     return pd.DataFrame(results)
 
-def plot_combined_lattice_parameters(df, reference_temp=10, filename='lattice_abc_absolute.svg', 
-                                     shade_region=(10, 320)):
+def plot_combined_lattice_parameters(df, reference_temp=50, filename='lattice_abc_absolute.svg', 
+                                     shade_region=(100, 150)):
     """
     Plot a, b, and c lattice parameters together as absolute change relative to reference temperature
     
@@ -145,7 +145,7 @@ def plot_combined_lattice_parameters(df, reference_temp=10, filename='lattice_ab
     df : DataFrame
         DataFrame with temperature and lattice parameter data
     reference_temp : float
-        Reference temperature for normalization (default: 10 K)
+        Reference temperature for normalization (default: 50 K)
     filename : str
         Output filename
     shade_region : tuple
@@ -155,7 +155,7 @@ def plot_combined_lattice_parameters(df, reference_temp=10, filename='lattice_ab
         print("No data to plot")
         return
     
-    fig, ax = plt.subplots(figsize=(5.5, 4.5))
+    fig, ax = plt.subplots(figsize=(5.5, 5.5))
     
     # Get reference values at reference temperature
     ref_row = df[df['temperature'] == reference_temp]
@@ -179,7 +179,7 @@ def plot_combined_lattice_parameters(df, reference_temp=10, filename='lattice_ab
     # Calculate absolute changes for each parameter
     params = ['a', 'b', 'c']
     colors = ['#E74C3C', '#3498DB', '#2ECC71']  # Red, Blue, Green
-    labels = [r'$a$', r'$b$', r'$c$']
+    labels = [r'$\Delta a$', r'$\Delta b$', r'$\Delta c$']
     fmts = ['o-', 'v-', 's-']
     ref_values = [a_ref, b_ref, c_ref]
     
@@ -198,28 +198,31 @@ def plot_combined_lattice_parameters(df, reference_temp=10, filename='lattice_ab
                    color=color, fmt=fmt, capsize=4, capthick=1.5, 
                    linewidth=2, markersize=6, label=label, alpha=0.8)
     
-    # Add shaded region if specified
-    if shade_region is not None:
-        t_min, t_max = shade_region
-        t_min_2, t_max_2 = 320, 360
-        ax.axvspan(t_min, t_max, alpha=0.15, color='gray', zorder=0)
-        ax.axvspan(t_min_2, t_max_2, alpha=0.15, color='red', zorder=0)
+   
+    # Adding vertical dashed-lines
+    ax.axvline(x=180, linestyle='--', color='gray', linewidth=2.0)
+    ax.axvline(x=330, linestyle='--', color='gray', linewidth=2.0)    
+
+    # Adding text    
+    ax.text(x=185, y=0.30, s='180 K', color='gray', va='top', ha='left', rotation=0)
+    ax.text(x=335, y=0.15, s='330 K', color='gray', va='top', ha='left', rotation=0)    
+#    ax.text(0.96, 0.96, 'Heating', transform=ax.transAxes, ha='right', va='top', color='black')
     
     # Formatting
-    ax.set_xlim(10, 700)
-    ax.set_ylim(-0.1, 0.3)
+    ax.set_xlim(50, 700)
+    ax.set_ylim(-0.2, 0.4)
     ax.set_xlabel(r'$T$ / K')
     ax.set_ylabel(r'$\Delta \ell$ / Å')
     
     # Set number of ticks
-    ax.xaxis.set_major_locator(LinearLocator(numticks=4))
+    ax.xaxis.set_major_locator(LinearLocator(numticks=6))
     ax.yaxis.set_major_locator(LinearLocator(numticks=4))
     
     # Format y-axis with 2 decimals
     ax.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
     
     # Legend
-    ax.legend(frameon=False, loc='upper left')
+    ax.legend(frameon=False, loc='upper center', bbox_to_anchor=(0.4, -0.35), ncol=3)
     
     # Grid for easier reading (optional)
 #    ax.grid(True, alpha=0.2, linestyle='--', linewidth=0.5)
@@ -231,18 +234,18 @@ def plot_combined_lattice_parameters(df, reference_temp=10, filename='lattice_ab
     print(f"\nSaved {filename}")
     
     # Print summary statistics
-    print("\nAbsolute lattice parameter changes (10 K → 700 K):")
+    print("\nAbsolute lattice parameter changes (50 K → 700 K):")
     print("-" * 50)
     for param, label in zip(params, labels):
-        initial = df[df['temperature'] == 10][f'{param}_mean'].values[0]
+        initial = df[df['temperature'] == 50][f'{param}_mean'].values[0]
         final = df[df['temperature'] == 700][f'{param}_mean'].values[0]
         absolute_change = final - initial
         percent_change = (final - initial) / initial * 100
         print(f"  {label}: {absolute_change:+.4f} Å ({initial:.4f} → {final:.4f} Å, {percent_change:+.2f}%)")
 
 
-def plot_combined_angles(df, reference_temp=10, filename='angles_alphabetagamma_absolute.svg', 
-                         shade_region=(10, 320)):
+def plot_combined_angles(df, reference_temp=50, filename='angles_alphabetagamma_absolute.svg', 
+                         shade_region=(100, 150)):
     """
     Plot alpha, beta, and gamma angles together as absolute change relative to reference temperature
     
@@ -251,7 +254,7 @@ def plot_combined_angles(df, reference_temp=10, filename='angles_alphabetagamma_
     df : DataFrame
         DataFrame with temperature and angle data
     reference_temp : float
-        Reference temperature for normalization (default: 10 K)
+        Reference temperature for normalization (default: 50 K)
     filename : str
         Output filename
     shade_region : tuple
@@ -261,7 +264,7 @@ def plot_combined_angles(df, reference_temp=10, filename='angles_alphabetagamma_
         print("No data to plot")
         return
     
-    fig, ax = plt.subplots(figsize=(5.5, 4.5))
+    fig, ax = plt.subplots(figsize=(5.5, 5.5))
     
     # Get reference values at reference temperature
     ref_row = df[df['temperature'] == reference_temp]
@@ -285,7 +288,7 @@ def plot_combined_angles(df, reference_temp=10, filename='angles_alphabetagamma_
     # Calculate changes for each angle (in degrees, not percentage)
     params = ['alpha', 'beta', 'gamma']
     colors = ['#9B59B6', '#E67E22', '#1ABC9C']  # Purple, Orange, Teal
-    labels = [r'$\alpha$', r'$\beta$', r'$\gamma$']
+    labels = [r'$\Delta \alpha$', r'$\Delta \beta$', r'$\Delta \gamma$']
     fmts = ['o-', 'v-', 's-']
     ref_values = [alpha_ref, beta_ref, gamma_ref]
     
@@ -304,28 +307,31 @@ def plot_combined_angles(df, reference_temp=10, filename='angles_alphabetagamma_
                    color=color, fmt=fmt, capsize=4, capthick=1.5, 
                    linewidth=2, markersize=6, label=label, alpha=0.8)
     
-    # Add shaded region if specified
-    if shade_region is not None:
-        t_min, t_max = shade_region
-        t_min_2, t_max_2 = 320, 360
-        ax.axvspan(t_min, t_max, alpha=0.15, color='gray', zorder=0)
-        ax.axvspan(t_min_2, t_max_2, alpha=0.15, color='red', zorder=0)
+
+    # Adding vertical dashed-lines
+    ax.axvline(x=180, linestyle='--', color='gray', linewidth=2.0)
+    ax.axvline(x=330, linestyle='--', color='gray', linewidth=2.0)
     
+    # Adding text    
+    ax.text(x=185, y=-0.05, s='180 K', color='gray', va='top', ha='left', rotation=0)
+    ax.text(x=335, y=-0.15, s='330 K', color='gray', va='top', ha='left', rotation=0)    
+#    ax.text(0.96, 0.96, 'Heating', transform=ax.transAxes, ha='right', va='top', color='black')
+   
     # Formatting
-    ax.set_xlim(10, 700)
-    ax.set_ylim(-0.1, 0.3)
+    ax.set_xlim(50, 700)
+    ax.set_ylim(-0.2, 0.4)
     ax.set_xlabel(r'$T$ / K')
     ax.set_ylabel(r'$\Delta \theta$ / °')
     
     # Set number of ticks
-    ax.xaxis.set_major_locator(LinearLocator(numticks=4))
+    ax.xaxis.set_major_locator(LinearLocator(numticks=6))
     ax.yaxis.set_major_locator(LinearLocator(numticks=4))
     
     # Format y-axis with 2 decimals
     ax.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
     
     # Legend
-    ax.legend(frameon=False, loc='upper left')
+    ax.legend(frameon=False, loc='upper center', bbox_to_anchor=(0.4, -0.35), ncol=3)
     
     # Grid for easier reading (optional)
 #    ax.grid(True, alpha=0.2, linestyle='--', linewidth=0.5)
@@ -337,10 +343,10 @@ def plot_combined_angles(df, reference_temp=10, filename='angles_alphabetagamma_
     print(f"\nSaved {filename}")
     
     # Print summary statistics
-    print("\nAngle change summary (10 K → 700 K):")
+    print("\nAngle change summary (50 K → 700 K):")
     print("-" * 50)
     for param, label in zip(params, labels):
-        initial = df[df['temperature'] == 10][f'{param}_mean'].values[0]
+        initial = df[df['temperature'] == 50][f'{param}_mean'].values[0]
         final = df[df['temperature'] == 700][f'{param}_mean'].values[0]
         angle_change = final - initial
         print(f"  {label}: {angle_change:+.4f}° ({initial:.4f}° → {final:.4f}°)")
@@ -354,7 +360,7 @@ def main():
     print("="*60)
     
     # Define supercell dimensions
-    supercell = (3, 4, 3)  # (na, nb, nc)
+    supercell = (4, 5, 2)  # (na, nb, nc)
     
     # Analyze all temperature data
     df = analyze_temperature_data(supercell=supercell)
@@ -376,15 +382,15 @@ def main():
     
     # Plot 1: Combined a, b, c parameters (absolute change in Angstroms)
     print("\n--- Combined lattice parameters (a, b, c) ---")
-    plot_combined_lattice_parameters(df, reference_temp=10, 
+    plot_combined_lattice_parameters(df, reference_temp=50, 
                                     filename='lattice_abc_absolute.svg',
-                                    shade_region=(10, 320))
+                                    shade_region=(100, 150))
     
     # Plot 2: Combined alpha, beta, gamma angles (absolute change in degrees)
     print("\n--- Combined angles (α, β, γ) ---")
-    plot_combined_angles(df, reference_temp=10,
+    plot_combined_angles(df, reference_temp=50,
                         filename='angles_alphabetagamma_absolute.svg',
-                        shade_region=(10, 320))
+                        shade_region=(100, 150))
     
     print("\n" + "="*60)
     print("Analysis complete!")
@@ -398,7 +404,7 @@ def main():
     print("-" * 60)
     
     # Lattice parameter changes
-    print(f"Lattice parameter changes (10 K → 700 K):")
+    print(f"Lattice parameter changes (50 K → 700 K):")
     for param in ['a', 'b', 'c']:
         initial = df.iloc[0][f'{param}_mean']
         final = df.iloc[-1][f'{param}_mean']
@@ -407,7 +413,7 @@ def main():
         print(f"  {param}: {abs_change:+.4f} Å ({pct_change:+.2f}%)")
     
     # Angle changes
-    print(f"\nAngle changes (10 K → 700 K):")
+    print(f"\nAngle changes (50 K → 700 K):")
     for param, symbol in [('alpha', 'α'), ('beta', 'β'), ('gamma', 'γ')]:
         initial = df.iloc[0][f'{param}_mean']
         final = df.iloc[-1][f'{param}_mean']
