@@ -214,7 +214,7 @@ def process_all_temperatures(base_dir, temperatures, q_cart, file_pattern,
             continue
         
         # Find matching XYZ file
-        pattern = f"*{file_pattern}*.xyz"
+        pattern = f"*{file_pattern}.xyz"
         matching_files = list(temp_dir.glob(pattern))
         
         if len(matching_files) == 0:
@@ -386,9 +386,10 @@ if __name__ == "__main__":
         temperatures = args.temperatures
     else:
         temperatures = [
-            "10K", "50K", "100K", "150K", "200K", "250K", "300K", "310K", 
-            "320K", "330K", "340K", "350K", "360K", "370K", "380K", "390K",
-            "400K", "450K", "500K", "550K", "600K", "650K", "700K"
+            "50K", "100K", "110K", "120K", "130K", "140K", "150K", "160K", 
+            "170K", "180K", "190K", "200K", "250K", "260K", "270K", "280K",
+            "290K", "300K", "310K", "320K", "330K", "340K", "350K", "400K",
+            "450K", "500K", "550K", "600K", "650K", "700K"
         ]
     
     # Define q-path in fractional coordinates
