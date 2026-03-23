@@ -12,7 +12,7 @@ This directory contains the `LAMMPS` input files and SLURM job scripts for runni
 
 ## Simulation Overview
 
-The MLMD simulations use the fine-tuned MACE potential (`fine-tuned_mace-mp-0b3-medium_compiled.model-lammps.pt`) to perform long NpT molecular dynamics runs far beyond what is accessible with direct AIMD. Each simulation runs for **100 ps** (50000 steps at 2 fs timestep) with a fully flexible simulation cell (triclinic NPT ensemble).
+The MLMD simulations use the fine-tuned MACE potential (`fine-tuned_mace-mp-0b3-medium_vf_compiled.model-lammps.pt`) to perform long NpT molecular dynamics runs far beyond what is accessible with direct AIMD. Each simulation runs for **110 ps** (110000 steps at 1 fs timestep, 10 ps equilibration and 100  ps production) with a fully flexible simulation cell (triclinic NPT ensemble).
 
 ---
 
@@ -27,7 +27,7 @@ The MLMD simulations use the fine-tuned MACE potential (`fine-tuned_mace-mp-0b3-
 | **Boundary conditions** | `p p p` | Periodic in all three directions |
 | **Dimensions** | 3 | Three-dimensional simulation |
 | **Newton** | `on` | Newton's 3rd law pairs enabled |
-| **Supercell replication** | 3×4×3 | Replicated from single-crystal input |
+| **Supercell replication** | 4×5×2 | Replicated from single-crystal input |
 | **Box geometry** | Triclinic | Full cell flexibility (`change_box all triclinic`) |
 
 ### Interatomic Potential
@@ -35,7 +35,7 @@ The MLMD simulations use the fine-tuned MACE potential (`fine-tuned_mace-mp-0b3-
 | Parameter | Value |
 |-----------|-------|
 | **Pair style** | `mace no_domain_decomposition` |
-| **Model file** | `fine-tuned_mace-mp-0b3-medium_compiled.model-lammps.pt` |
+| **Model file** | `fine-tuned_mace-mp-0b3-medium_vf_compiled.model-lammps.pt` |
 | **Element mapping** | Type 1: Ru, Type 2: P |
 | **Mass (Ru)** | 101.07 g/mol |
 | **Mass (P)** | 30.973761 g/mol |
@@ -44,8 +44,8 @@ The MLMD simulations use the fine-tuned MACE potential (`fine-tuned_mace-mp-0b3-
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| **Timestep** | 2 fs (0.002 ps) | Integration time step |
-| **Total steps** | 50,000 | Total simulation duration: 100 ps |
+| **Timestep** | 1 fs (0.001 ps) | Integration time step |
+| **Total steps** | 110,000 | Total simulation duration: 10 ps equilibration + 100 ps production |
 | **Ensemble** | NpT — triclinic (`tri`) | Fully flexible cell (all 6 cell parameters) |
 | **Pressure** | 0.0 bar (isotropic) | Target pressure |
 | **Thermostat damping** | 100 × dt = 0.2 ps | Nosé-Hoover thermostat time constant |
@@ -65,10 +65,10 @@ The MLMD simulations use the fine-tuned MACE potential (`fine-tuned_mace-mp-0b3-
 
 | Output | Frequency | File |
 |--------|-----------|------|
-| Thermodynamic data | Every 25 steps | Screen / log |
-| Lattice parameters | Every 25 steps | `lattice_params.dat` |
-| Atomic trajectory | Every 25 steps | `trajectory.dump` |
-| Restart files | Every 2,500 steps | `tmp.restart` |
+| Thermodynamic data | Every 10 steps | Screen / log |
+| Lattice parameters | Every 10 steps | `lattice_params.dat` |
+| Atomic trajectory | Every 10 steps | `trajectory.dump` |
+| Restart files | Every 1000 steps | `tmp.restart` |
 | Final configuration | End of run | `final_config.data` |
 
 **Thermo quantities logged**: `step`, `temp`, `press`, `pe`, `ke`, `etotal`, `vol`, `lx`, `ly`, `lz`, `xy`, `xz`, `yz`
@@ -77,14 +77,14 @@ The MLMD simulations use the fine-tuned MACE potential (`fine-tuned_mace-mp-0b3-
 
 ## Simulation Conditions
 
-Simulations are performed for the **monoclinic phase** of RuP at the following 23 temperatures:
+Simulations are performed using the experimentally determined structure of the **monoclinic phase** of RuP at 11 K as an initial configuration for the MLMD at the following 30 temperatures:
 
-10 K, 50 K, 100 K, 150 K, 200 K, 250 K, 300 K, 310 K, 320 K, 330 K, 340 K, 350 K, 360 K, 370 K, 380 K, 390 K, 400 K, 450 K, 500 K, 550 K, 600 K, 650 K, 700 K
+50 K, 100 K, 110 K, 120 K, 130 K, 140 K, 150 K, 160 K, 170 K, 180 K, 190 K, 200 K, 250 K, 260 K, 270 K, 280 K, 290 K, 300 K, 310 K, 320 K, 330 K, 340 K, 350 K, 400 K, 450 K, 500 K, 550 K, 600 K, 650 K, 700 K.
 
 The temperature is controlled via the variable `TEMP` in the input file, adjusted for each individual simulation:
 
 ```lammps
-variable TEMP equal 10.0   # e.g., 10 K → modify for each run
+variable TEMP equal 50.0   # e.g., 50 K → modify for each run
 ```
 
 ---
@@ -93,26 +93,33 @@ variable TEMP equal 10.0   # e.g., 10 K → modify for each run
 
 ```
 ./lammps-mlmd_simulations/
-├── 10K/
-│   ├── mono_lammps.in
-│   ├── monoclinic_pdf_refinement_single_crystal_11K.data
-│   ├── fine-tuned_mace-mp-0b3-medium_compiled.model-lammps.pt
-│   └── lammps-gpu.sh
+├── monoclinic_pdf_refinement_single_crystal_11K.data
+├── fine-tuned_mace-mp-0b3-medium_vf_compiled.model-lammps.pt
 ├── 50K/
+│   ├── rup_mono_lammps.in
+│   └── lammps-gpu.sh
 ├── 100K/
+├── 110K/
+├── 120K/
+├── 130K/
+├── 140K/
 ├── 150K/
+├── 160K/
+├── 170K/
+├── 180K/
+├── 190K/
 ├── 200K/
 ├── 250K/
+├── 260K/
+├── 270K/
+├── 280K/
+├── 290K/
 ├── 300K/
 ├── 310K/
 ├── 320K/
 ├── 330K/
 ├── 340K/
 ├── 350K/
-├── 360K/
-├── 370K/
-├── 380K/
-├── 390K/
 ├── 400K/
 ├── 450K/
 ├── 500K/
@@ -130,8 +137,8 @@ Each temperature subdirectory contains the same set of input files, with only th
 
 - [`mono_lammps.in`](./mono_lammps.in): LAMMPS input script defining the simulation setup, potential, ensemble, and output
 - [`monoclinic_pdf_refinement_single_crystal_11K.data`](./monoclinic_pdf_refinement_single_crystal_11K.data): Initial atomic structure for the monoclinic phase (from PDF refinement), replicated 3×4×3 at runtime
-- [`fine-tuned_mace-mp-0b3-medium_compiled.model-lammps.pt`](https://doi.org/10.5281/zenodo.18709769): TorchScript-compiled fine-tuned MACE potential for use with LAMMPS
-- [`lammps-gpu.sh`](./lammps-gpu.sh): SLURM batch job script for GPU-accelerated LAMMPS on Mahti
+- [`fine-tuned_mace-mp-0b3-medium_vf_compiled.model-lammps.pt`](https://doi.org/10.5281/zenodo.18709769): TorchScript-compiled fine-tuned MACE potential for use with LAMMPS
+- [`lammps-gpu.sh`](./lammps-gpu.sh): SLURM batch job script for GPU-accelerated LAMMPS on LUMI
 
 ## Output Files
 
@@ -149,36 +156,23 @@ Each simulation produces the following files:
 
 | Parameter | Value |
 |-----------|-------|
-| **GPU** | 1× NVIDIA A100 |
+| **GPU** | 1× AMD MI250x |
 | **OMP threads** | 1 (`OMP_NUM_THREADS=1`) |
-
-### Software Environment
-
-| Component | Version / Path |
-|-----------|---------------|
-| GCC | 11.2.0 |
-| OpenMPI | 4.1.2 |
-| FFTW | 3.3.10-mpi |
-| CUDA | 11.5.0 |
-| cuDNN | 8.3.3.40-11.5 |
-| Intel MKL | 2021.4.0 |
-| LAMMPS | Custom build with MACE + Kokkos (`lammps-mace`) |
-| LibTorch | Installed at `$LIBTORCH_DIR` |
 
 LAMMPS is invoked with the Kokkos GPU backend and the MACE pair style:
 
 ```bash
-srun -n 1 lmp -sf kk -k on g 4 -pk kokkos -in mono_lammps.in
+srun lmp -in rup_mono_lammps.in -k on g 1 -sf kk -pk kokkos newton on neigh half
 ```
 
 - `-sf kk`: Use Kokkos suffix for all compatible styles
-- `-k on g 4`: Enable Kokkos on 4 GPUs
+- `-k on g 1`: Enable Kokkos on 1 GPUs
 - `-pk kokkos`: Activate Kokkos package
 
 ## Requirements
 
-- **Supercomputer**: Mahti supercomputer at CSC — IT Center for Science (Finland). More details: [www.mahti.csc.fi](https://www.mahti.csc.fi)
-- **GPU**: NVIDIA A100
+- **Supercomputer**: LUMI supercomputer. More details: [docs.lumi-supercomputer.eu/](https://docs.lumi-supercomputer.eu/)
+- **GPU**: AMD MI250x
 - **LAMMPS**: Custom build with MACE pair style, Kokkos, and LibTorch support
 - **MACE-LAMMPS**: Compiled TorchScript model (`.model-lammps.pt`) generated from the fine-tuned MACE checkpoint (see [MACE GitHub](https://github.com/ACEsuit/mace))
 
