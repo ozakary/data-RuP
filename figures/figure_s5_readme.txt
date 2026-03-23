@@ -1,1 +1,1 @@
-All correlation panels for Figure S5 (energy: E_monoclinic, E_orthorhombic, stress) are DFT vs. ML (MACE-MP-0b3) correlation plots, all generated using fig-1c_code_compare_v4.py. For each figure, the individual panels were assembled in Inkscape.
+All three correlation panels for Figure S5 (stress tensor components) are DFT vs. ML (fine-tuned MACE-MP-0b3) correlation plots, all generated using fig-3b_code_compare_v4.py. For each figure, the individual panels were assembled in Inkscape.
