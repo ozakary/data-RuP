@@ -340,7 +340,7 @@ def plot_sq(data, args):
     
     # Legend below the plot with 4 columns - user's style
 #    leg = ax.legend(frameon=False, loc='upper center', 
-#                   bbox_to_anchor=(0.5, -0.18), ncol=4)
+#                   bbox_to_anchor=(0.5, -0.22), ncol=10)
     
     # Save figure - match user's style
     print(f"\nSaving figure to: {args.output}")
