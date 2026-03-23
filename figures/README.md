@@ -30,13 +30,14 @@ To reproduce the figures and analyze the data, you will need the following softw
 
 | **Figure** | **Script** | **Dataset** | **Readme** |
 |------------|------------|-------------|------------|
-| Figure 1 | [Script A](./fig-1a_code_plot.py), [Script B](./fig-1b_code_compare_v4.py), [Script C](./fig-1c_code_compare_v4.py), [Script D](./fig-1d_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_1_readme.txt) |
-| Figure 2 | `N/A` (VESTA + Inkscape) | `N/A` | [README](./figure_2_readme.txt) |
-| Figure 3 | [Script](./fig-3_code_plots_unit_cell_norm_3.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_3_readme.txt) |
-| Figure 4 | [Script A (RDF map)](../rdfs_and_structure-factors/code_plot_rdf_ru-ru_opt_with_inset_2d-map.py), [Script B (avg RDF map)](../rdfs_and_structure-factors/code_plot_avg_rdf_ru-ru_opt_with_inset_2d-map.py), [Script C (S(q) insta)](../rdfs_and_structure-factors/code_sq_plot.py), [Script D (S(q) avg)](../rdfs_and_structure-factors/code_sq_plot_avg.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_4_readme.txt) |
-| Figure 5 | [Script A (Ru–Ru distances)](../local-order_metrics/code_distances_plot_all-temps_kde_2d-map_vf3.py), [Script B (dimer bond order)](../local-order_metrics/code_dimer_bond_order_plot_vf.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_5_readme.txt) |
-| Figure 6 | [Script A (trimer angle)](../local-order_metrics/code_trimer_angle_order_plot_vf.py), [Script B (trimer bond order)](../local-order_metrics/code_trimer_bond_order_plot_vf.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_6_readme.txt) |
-| Figure 7 | [Script A (time corr.)](../local-order_metrics/plot_time_correlation.py), [Script B (space corr. parallel)](../local-order_metrics/plot_space_correlation.py), [Script C (space corr. perpendicular)](../local-order_metrics/plot_space_correlation.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_7_readme.txt) |
+| Figure 1 | `N/A` (VESTA + Inkscape) | `N/A` | [README](./figure_1_readme.txt) |
+| Figure 2 | [Script](./fig-1a_code_plot.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_2_readme.txt) |
+| Figure 3 | [Script A](./fig-1c_code_compare_v4.py), [Script B](./fig-1d_code_compare_v4.py)| [README](./figure_3_readme.txt) |
+| Figure 4 | [Script](./fig-3_code_plots_unit_cell_norm_3.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_4_readme.txt) |
+| Figure 5 | [Script A (RDF map)](../rdfs_and_structure-factors/code_plot_rdf_ru-ru_opt_with_inset_2d-map.py), [Script B (avg RDF map)](../rdfs_and_structure-factors/code_plot_avg_rdf_ru-ru_opt_with_inset_2d-map.py), [Script C (S(q) insta)](../rdfs_and_structure-factors/code_sq_plot.py), [Script D (S(q) avg)](../rdfs_and_structure-factors/code_sq_plot_avg.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_5_readme.txt) |
+| Figure 6 | [Script A (Ru–Ru distances)](../local-order_metrics/code_distances_plot_all-temps_kde_2d-map_vf3.py), [Script B (dimer bond order)](../local-order_metrics/code_dimer_bond_order_plot_vf.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_6_readme.txt) |
+| Figure 7 | [Script A (trimer angle)](../local-order_metrics/code_trimer_angle_order_plot_vf.py), [Script B (trimer bond order)](../local-order_metrics/code_trimer_bond_order_plot_vf.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_7_readme.txt) |
+| Figure 8 | [Script A (time corr.)](../local-order_metrics/plot_time_correlation.py), [Script B (space corr. parallel)](../local-order_metrics/plot_space_correlation.py), [Script C (space corr. perpendicular)](../local-order_metrics/plot_space_correlation.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_8_readme.txt) |
 
 ## Table 2: Figures from the Supporting Information
 
