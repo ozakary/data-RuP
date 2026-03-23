@@ -42,14 +42,13 @@ To reproduce the figures and analyze the data, you will need the following softw
 
 | **Figure** | **Script** | **Dataset** | **Readme** |
 |------------|------------|-------------|------------|
-| Figure S1 | [Script A (energy)](./fig-s1-a_code_plot_energy.py), [Script B (forces)](./fig-s1-b_code_plot_force.py), [Script C (stress)](./fig-s1-c_code_plot_stress.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s1_readme.txt) |
+| Figure S1 | [Script A (energy)](./fig-s1a_code_plot_energy.py), [Script B (forces)](./fig-s1b_code_plot_force.py), [Script C (stress)](./fig-s1c_code_plot_stress.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s1_readme.txt) |
 | Figure S2 | [Script](./fig-1b_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s2_readme.txt) |
 | Figure S3 | [Script](./fig-1b_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s3_readme.txt) |
 | Figure S4 | [Script](./fig-1b_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s4_readme.txt) |
 | Figure S5 | [Script](./fig-1c_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s5_readme.txt) |
 | Figure S6 | [Script](./fig-1c_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s6_readme.txt) |
 | Figure S7 | [Script](./fig-1c_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s7_readme.txt) |
-| Figure S8 | [Script A (energy)](./fig-s8-a_code_plot_energy.py), [Script B (forces)](./fig-s8-b_code_plot_force.py), [Script C (stress)](./fig-s8-c_code_plot_stress.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s8_readme.txt) |
 | Figure S9 | [Script](./fig-1d_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s9_readme.txt) |
 | Figure S10 | [Script](./fig-1d_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s10_readme.txt) |
 | Figure S11 | [Script](./fig-1d_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s11_readme.txt) |
