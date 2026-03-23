@@ -1,1 +1,1 @@
-All correlation panels for Figure S6 (force components: f_x, f_y, f_z) are DFT vs. ML (MACE-MP-0b3) correlation plots, all generated using fig-1c_code_compare_v4.py. For each figure, the individual panels were assembled in Inkscape.
+Figure S7a-S7f (time auto-correlation function C(t) vs. fit) at the temperatures 50 K, 100 K, 110 K, 120 K, 130 K, and 140 K was generated using plot_time_correlation.py from local-order_metrics/correlation_functions/time_correlation/. All panels were assembled in Inkscape to form the complete figure.
