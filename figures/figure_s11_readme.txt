@@ -1,1 +1,1 @@
-All correlation panels for Figure S11 (stress tensor components: s_xx, s_yy, s_zz, s_xy, s_xz, s_yz) are DFT vs. ML (fine-tuned MACE-MP-0b3) correlation plots, all generated using fig-1d_code_compare_v4.py. For each figure, the individual panels were assembled in Inkscape.
+Figure S11a-S11f (time auto-correlation function C(t) vs. fit) at the temperatures 450 K, 500 K, 550 K, 600 K, 650 K, and 700 K was generated using plot_time_correlation.py from local-order_metrics/correlation_functions/time_correlation/. All panels were assembled in Inkscape to form the complete figure.
