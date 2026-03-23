@@ -1,1 +1,1 @@
-All correlation panels for Figure S2 (energy: E_monoclinic, E_orthorhombic, stress) are DFT vs. ML (Allegro) correlation plots, all generated using fig-1b_code_compare_v4.py. For each figure, the individual panels were assembled in Inkscape.
+All three correlation panels for Figure S2 (force components) are DFT vs. ML (MACE-MP-0b3) correlation plots, all generated using fig-3a_code_compare_v4.py. For each figure, the individual panels were assembled in Inkscape.
