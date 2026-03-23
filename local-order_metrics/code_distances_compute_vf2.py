@@ -614,7 +614,7 @@ def analyze_single_temperature(trajectory_path, temperature, n_processes=8):
     return csv_filename, pairs_filename
 
 def analyze_populations_across_temperatures(output_dir='.', 
-                                           ref_temperature=10,
+                                           ref_temperature=50,
                                            pop1_range=(2.8, 3.2),
                                            pop2_range=(3.4, 3.8)):
     """
@@ -691,30 +691,36 @@ def main():
     # Define temperatures to analyze
     temperature_paths = {
         # Uncomment to add more temperatures:
-        10: "../../10K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        50: "../../50K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        100: "../../100K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        150: "../../150K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        200: "../../200K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        250: "../../250K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        300: "../../300K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        310: "../../310K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        320: "../../320K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        330: "../../330K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        340: "../../340K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        350: "../../350K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        360: "../../360K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        370: "../../370K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        380: "../../380K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        390: "../../390K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        400: "../../400K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        450: "../../450K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        500: "../../500K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        550: "../../550K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        600: "../../600K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        650: "../../650K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        700: "../../700K/lammps_out/rup_traj_sampled-50_100ps.xyz",
-        1000: "../../1000K/lammps_out/rup_traj_sampled-50_100ps.xyz",        
+        50: "../../50K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        100: "../../100K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        110: "../../110K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        120: "../../120K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        130: "../../130K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        140: "../../140K/lammps_out/rup_traj_sampled-10_100ps.xyz",               
+        150: "../../150K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        160: "../../160K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        170: "../../170K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        180: "../../180K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        190: "../../190K/lammps_out/rup_traj_sampled-10_100ps.xyz",                
+        200: "../../200K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        250: "../../250K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        260: "../../260K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        270: "../../270K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        280: "../../280K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        290: "../../290K/lammps_out/rup_traj_sampled-10_100ps.xyz",                
+        300: "../../300K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        310: "../../310K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        320: "../../320K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        330: "../../330K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        340: "../../340K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        350: "../../350K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        400: "../../400K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        450: "../../450K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        500: "../../500K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        550: "../../550K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        600: "../../600K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        650: "../../650K/lammps_out/rup_traj_sampled-10_100ps.xyz",
+        700: "../../700K/lammps_out/rup_traj_sampled-10_100ps.xyz",
     }
     
     n_processes = 8  # Adjustable
@@ -747,7 +753,7 @@ def main():
     
     analyze_populations_across_temperatures(
         output_dir='.',
-        ref_temperature=10,  # Reference temperature for population assignment
+        ref_temperature=50,  # Reference temperature for population assignment
         pop1_range=(2.8, 3.2),  # Population 1: short distances
         pop2_range=(3.4, 3.8)   # Population 2: long distances
     )
