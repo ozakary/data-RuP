@@ -64,21 +64,27 @@ Each simulation run consists of 500 ionic steps (1 fs timestep), with multiple c
 │   │   ├── POSCAR
 │   │   ├── POTCAR
 │   │   └── aimd.job
+│   ├── 50K/
 │   ├── 100K/
+│   ├── 150K/
 │   ├── 200K/
 │   ├── 250K/
 │   ├── 270K/
 │   └── 300K/
-└── orthorhombic/
-    ├── 300K/
-    │   ├── INCAR
-    │   ├── KPOINTS
-    │   ├── POSCAR
-    │   ├── POTCAR
-    │   └── aimd.job
-    ├── 370K/
-    ├── 400K/
-    └── 450K/
+├── orthorhombic/
+│   ├── 200K/
+│   │   ├── INCAR
+│   │   ├── KPOINTS
+│   │   ├── POSCAR
+│   │   ├── POTCAR
+│   │   └── aimd.job
+│   ├── 250K/
+│   ├── 300K/
+│   ├── 330K/
+│   ├── 350K/
+│   ├── 400K/
+│   ├── 450K/
+│   └── 500K/
 ```
 
 ## Example Input Files (Monoclinic Phase at 11 K)
@@ -86,7 +92,7 @@ Each simulation run consists of 500 ionic steps (1 fs timestep), with multiple c
 - [`INCAR`](./INCAR): AIMD calculation parameters (functional, MD settings, thermostat)
 - [`KPOINTS`](./KPOINTS): k-point sampling specification (Γ-point only)
 - [`POTCAR`](./POTCAR): Pseudopotential data for Ru and P
-- [`POSCAR`](./POSCAR): Initial atomic positions for each phase and temperature
+- [`POSCAR`](./POSCAR): Initial atomic positions for each phase
 - [`aimd.job`](./aimd.job): SLURM batch job script for Mahti
 
 ## Output Files
