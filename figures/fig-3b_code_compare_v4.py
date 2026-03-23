@@ -112,7 +112,7 @@ def export_to_csv(data, filename):
 
 def main():
     # Define input filename
-    input_file = 'rup_dataset_test_predictions.xyz'
+    input_file = '../mace-mp-0b3_fine-tuning_rup_vf/testing/rup_dataset_test_predictions.xyz'
     
     print(f"Reading structures from {input_file}...")
     # Use ASE to read all structures
