@@ -8,7 +8,7 @@ def generate_average_structure(temp_dir, temp_value):
     """
     Generate average structure - correct method for NPT simulations
     """
-    trajectory_file = f"../../{temp_dir}/lammps_out/rup_traj_sampled-50_100ps.xyz"
+    trajectory_file = f"../../{temp_dir}/lammps_out/rup_traj_sampled-10_100ps.xyz"
     
     print(f"\nProcessing {temp_dir} ({temp_value}K):")
     
@@ -61,7 +61,7 @@ def generate_average_structure(temp_dir, temp_value):
     dists = pdist(avg_structure.get_positions())
     min_dist = np.min(dists)
     
-    output_file = f"../../{temp_dir}/lammps_out/rup_traj_sampled-50_100ps_average_structure_{temp_value}K.xyz"
+    output_file = f"../../{temp_dir}/lammps_out/rup_traj_sampled-10_100ps_average_structure_{temp_value}K.xyz"
     write(output_file, avg_structure)
     
     status = "✓ OK" if min_dist >= 1.7 else "⚠️  WARNING"
@@ -73,29 +73,35 @@ def generate_average_structure(temp_dir, temp_value):
 
 # Process all temperatures
 temperatures = {
-    '10K': 10,
-    '50K': 50,
+    '50K': 50
     '100K': 100,
+    '110K': 110,
+    '120K': 120,
+    '130K': 130,
+    '140K': 140,
     '150K': 150,
+    '160K': 160,
+    '170K': 170,
+    '180K': 180,
+    '190K': 190,
     '200K': 200,
     '250K': 250,
+    '260K': 260,
+    '270K': 270,
+    '280K': 280,
+    '290K': 290,
     '300K': 300,
     '310K': 310,
     '320K': 320,
     '330K': 330,
-    '340K': 340,
     '350K': 350,
-    '360K': 360,
-    '370K': 370,
-    '380K': 380,
-    '390K': 390,
     '400K': 400,
     '450K': 450,
     '500K': 500,
     '550K': 550,
     '600K': 600,
     '650K': 650,
-    '700K': 700
+    '700K': 700            
 }
 
 print("="*50)
