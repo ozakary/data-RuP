@@ -138,7 +138,7 @@ def plot_band_and_dos(temp_dir, temp_value, y_limit=None, dos_sigma=0.05,
     # PLOT 1: Band structure + Total DOS
     # ============================================
     print("  Creating band structure + DOS plot...")
-    fig = plt.figure(figsize=(4.67, 4.0))
+    fig = plt.figure(figsize=(4.25, 3.75))
     gs = GridSpec(1, 2, width_ratios=[3, 1], wspace=0.15)
     
     # Band structure panel
@@ -265,29 +265,36 @@ if __name__ == "__main__":
     # =================================================================
     
     temperatures = {
-        '10K': 10,
         '50K': 50,
         '100K': 100,
+        '110K': 110,
+        '120K': 120,
+        '130K': 130,
+        '140K': 140,
         '150K': 150,
+        '160K': 160,
+        '170K': 170,
+        '180K': 180,
+        '190K': 190,
         '200K': 200,
         '250K': 250,
+        '260K': 260,
+        '270K': 270,
+        '280K': 280,
+        '290K': 290,
         '300K': 300,
         '310K': 310,
         '320K': 320,
         '330K': 330,
         '340K': 340,
         '350K': 350,
-        '360K': 360,
-        '370K': 370,
-        '380K': 380,
-        '390K': 390,
         '400K': 400,
         '450K': 450,
         '500K': 500,
-        '550K': 550,
+        '550K': 550,                
         '600K': 600,
-        '650K': 650,
-        '700K': 700,
+        '650K': 650,        
+        '700K': 700,        
     }
     
     # Plot settings - change these freely, plotting is fast after first run!
