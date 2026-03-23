@@ -48,12 +48,13 @@ To reproduce the figures and analyze the data, you will need the following softw
 | Figure S4 | [Script](./fig-3a_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s4_readme.txt) |
 | Figure S5 | [Script](./fig-3b_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s5_readme.txt) |
 | Figure S6 | [Script A (trimer angle)](../local-order_metrics/code_trimer_angle_order_plot_vf.py), [Script B (trimer bond order)](../local-order_metrics/code_trimer_bond_order_plot_vf.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s6_readme.txt) |
-| Figure S7 | [Script](./fig-1c_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s7_readme.txt) |
-| Figure S8 | [Script](./fig-1c_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s8_readme.txt) |
-| Figure S9 | [Script](./fig-1d_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s9_readme.txt) |
-| Figure S10 | [Script](./fig-1d_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s10_readme.txt) |
-| Figure S11 | [Script](./fig-1d_code_compare_v4.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s11_readme.txt) |
-| Figure S12 | [Script](../ml-phonons/5-plot_band_structure_improved.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s12_readme.txt) |
+| Figure S7 | [Script](../local-order_metrics/plot_time_correlation.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s7_readme.txt) |
+| Figure S8 | [Script](../local-order_metrics/plot_time_correlation.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s8_readme.txt) |
+| Figure S9 | [Script](../local-order_metrics/plot_time_correlation.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s9_readme.txt) |
+| Figure S10 | [Script](../local-order_metrics/plot_time_correlation.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s10_readme.txt) |
+| Figure S11 | [Script](../local-order_metrics/plot_time_correlation.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s11_readme.txt) |
+| Figure S12 | [Script](../local-order_metrics/plot_space_correlation.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s12_readme.txt) |
+| Figure S13 | [Script](../ml-phonons/5-plot_band_structure_improved.py) | [Data (Zenodo)](https://doi.org/10.5281/zenodo.18709769) | [README](./figure_s13_readme.txt) |
 
 
 ---
