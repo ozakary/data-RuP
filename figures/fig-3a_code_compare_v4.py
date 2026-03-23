@@ -10,7 +10,7 @@ import figure_formatting_v2 as ff
 ff.set_rcParams(ff.master_formatting)
 
 def create_joint_plot(x_data, y_data, xlabel, ylabel, filename, scale_factor=1.0, 
-                     tick_format='{x:.3f}', stats_format=None):
+                     tick_format='{x:.3f}', stats_format=None, stats_position='top-left'):
     """Create and save a joint plot with marginal distributions.
     
     Args:
@@ -23,6 +23,7 @@ def create_joint_plot(x_data, y_data, xlabel, ylabel, filename, scale_factor=1.0
         tick_format: Format string for tick labels (default='{x:.3f}')
         stats_format: Dictionary with format strings for R2, RMSE, and MAE 
                      (default={'r2': 6, 'rmse': 6, 'mae': 6})
+        stats_position: Position of statistics text, either 'top-left' or 'bottom-right' (default='top-left')
     """
     # Set default stats formatting if not provided
     if stats_format is None:
@@ -34,16 +35,16 @@ def create_joint_plot(x_data, y_data, xlabel, ylabel, filename, scale_factor=1.0
     g = sns.JointGrid(data=None, x=x_data, y=y_data, height=6)
     
     # Add the scatter plot with specific color and size
-    g.plot_joint(plt.scatter, alpha=0.5, color='#E76F51', s=100, edgecolor='#E76F51')
+    g.plot_joint(plt.scatter, alpha=0.5, color='#E9C46A', s=100, edgecolor='#E9C46A')
     
     # Add marginal distributions with matching color
     n_bins = 50
-    g.plot_marginals(sns.histplot, color='#E76F51', kde=False, bins=n_bins)
+    g.plot_marginals(sns.histplot, color='#E9C46A', kde=False, bins=n_bins)
     
     # Update KDE line color in marginal plots
     for ax in [g.ax_marg_x, g.ax_marg_y]:
         for line in ax.lines:
-            line.set_color('#E76F51')
+            line.set_color('#E9C46A')
             
     # Add labels and title
     g.ax_joint.set_xlabel(xlabel)
@@ -80,8 +81,16 @@ def create_joint_plot(x_data, y_data, xlabel, ylabel, filename, scale_factor=1.0
     
     # Display the statistics (raw data) with custom formatting
     stats_text = f'R² = {r_value**2:.{stats_format["r2"]}f}\nRMSE = {rmse:.{stats_format["rmse"]}f}\nMAE = {mae:.{stats_format["mae"]}f}'
-    g.ax_joint.text(0.05, 0.75, stats_text,
-                   transform=g.ax_joint.transAxes)
+    
+    # Set position based on stats_position parameter
+    if stats_position == 'bottom-right':
+        g.ax_joint.text(0.95, 0.05, stats_text,
+                       transform=g.ax_joint.transAxes,
+                       verticalalignment='bottom',
+                       horizontalalignment='right')
+    else:  # default to top-left
+        g.ax_joint.text(0.05, 0.75, stats_text,
+                       transform=g.ax_joint.transAxes)
  
     # Add regression line (for display data)
     slope_display, intercept_display, _, _, _ = stats.linregress(x_data, y_data)
@@ -112,7 +121,7 @@ def export_to_csv(data, filename):
 
 def main():
     # Define input filename
-    input_file = '../mace-mp-0b3_fine-tuning_rup_vf/testing/rup_dataset_test_predictions.xyz'
+    input_file = 'rup_dataset_test_predictions.xyz'
     
     print(f"Reading structures from {input_file}...")
     # Use ASE to read all structures
@@ -221,7 +230,7 @@ def main():
     }
     export_to_csv(energy_data, 'energy_comparison.csv')
     
-    # Energy plot with scaling - MONOCLINIC PHASE
+# Energy plot with scaling - MONOCLINIC PHASE
     display_scale = 1e-3
     if len(dft_energies_mono) > 0:
         print("  Creating monoclinic phase energy plot...")
@@ -231,7 +240,8 @@ def main():
             'energy_comparison_monoclinic.svg',
             scale_factor=display_scale,
             tick_format=energy_format,
-            stats_format=energy_stats_format
+            stats_format=energy_stats_format,
+            stats_position='bottom-right'
         )
     
     # Energy plot with scaling - ORTHORHOMBIC PHASE
@@ -243,7 +253,8 @@ def main():
             'energy_comparison_orthorhombic.svg',
             scale_factor=display_scale,
             tick_format=energy_format,
-            stats_format=energy_stats_format
+            stats_format=energy_stats_format,
+            stats_position='bottom-right'
         )
     
     # ========== FORCE PLOTS ==========
