@@ -15,20 +15,17 @@ This directory contains the Python scripts used to postprocess the raw LAMMPS ML
 The raw LAMMPS `trajectory.dump` files are converted to the extended XYZ format using **TrajSlicer**, a lightweight trajectory processing tool. For each temperature, the following command is run inside the corresponding simulation directory:
 
 ```bash
-python3 trajslicer_src.py trajectory.dump rup_traj_sampled-50_100ps.xyz \
-    --start 0 --end 2000 \
+python3 trajslicer_src.py trajectory.dump rup_traj_sampled-10_100ps.xyz \
     --labels 1:Ru 2:P
 ```
 
 | Argument | Value | Description |
 |----------|-------|-------------|
 | `trajectory.dump` | — | Input LAMMPS dump file |
-| `rup_traj_sampled-50_100ps.xyz` | — | Output XYZ trajectory file |
-| `--start` | 0 | First frame to extract |
-| `--end` | 2000 | Last frame to extract |
+| `rup_traj_sampled-10_100ps.xyz` | — | Output XYZ trajectory file |
 | `--labels` | `1:Ru 2:P` | Map LAMMPS atom types to element symbols |
 
-This extracts all **2000 frames** of the 100 ps trajectory (written every 25 steps × 50,000 steps). The `sampled-50` in the filename reflects the 25-step dump interval relative to the 2 fs timestep (i.e., one frame every 50 fs).
+This extracts all **10001 frames** of the 100 ps trajectory (written every 10 steps × 100,000 steps). The `sampled-10` in the filename reflects the 10-step dump interval relative to the 1 fs timestep (i.e., one frame every 10 fs).
 
 > **TrajSlicer** source code and documentation: [https://github.com/ozakary/TrajSlicer](https://github.com/ozakary/TrajSlicer)
 
@@ -42,7 +39,7 @@ Time-averaged structures are computed for each temperature using a method correc
 python3 generate_average_strs_corrected.py
 ```
 
-This processes all 23 temperatures in sequence and writes one average structure file per temperature.
+This processes all 30 temperatures in sequence and writes one average structure file per temperature.
 
 ### Algorithm
 
@@ -68,21 +65,21 @@ The mean fractional position is computed over all frames and wrapped back into t
 
 **4. Construct and validate the average structure**
 
-An ASE `Atoms` object is constructed from the averaged fractional positions and averaged cell. A minimum interatomic distance check (threshold: 1.7 Å) is performed to validate the resulting structure.
+An ASE `Atoms` object is constructed from the averaged fractional positions and the averaged cell. A minimum interatomic distance check (threshold: 1.7 Å) is performed to validate the resulting structure.
 
 ### Output Files
 
-For each of the 23 temperatures, the script writes:
+For each of the 30 temperatures, the script writes:
 
 ```
-rup_traj_sampled-50_100ps_average_structure_{temp}K.xyz
+rup_traj_sampled-10_100ps_average_structure_{temp}K.xyz
 ```
 
 These files are saved into the corresponding `lammps_out/` subdirectory of each temperature simulation folder.
 
 ### Temperatures Processed
 
-10 K, 50 K, 100 K, 150 K, 200 K, 250 K, 300 K, 310 K, 320 K, 330 K, 340 K, 350 K, 360 K, 370 K, 380 K, 390 K, 400 K, 450 K, 500 K, 550 K, 600 K, 650 K, 700 K
+50 K, 100 K, 110 K, 120 K, 130 K, 140 K, 150 K, 160 K, 170 K, 180 K, 190 K, 200 K, 250 K, 260 K, 270 K, 280 K, 290 K, 300 K, 310 K, 320 K, 330 K, 340 K, 350 K, 400 K, 450 K, 500 K, 550 K, 600 K, 650 K, 700 K
 
 ---
 
@@ -98,12 +95,12 @@ The scripts read from and write to the individual temperature subdirectories of 
 
 ```
 ../lammps-mlmd_simulations/
-├── 10K/
+├── 50K/
 │   └── lammps_out/
 │       ├── trajectory.dump                                    # input
-│       ├── rup_traj_sampled-50_100ps.xyz                      # Step 1 output
-│       └── rup_traj_sampled-50_100ps_average_structure_10K.xyz # Step 2 output
-├── 50K/
+│       ├── rup_traj_sampled-10_100ps.xyz                      # Step 1 output
+│       └── rup_traj_sampled-10_100ps_average_structure_50K.xyz # Step 2 output
+├── 300K/
 │   └── lammps_out/
 │       ├── ...
 ...
@@ -117,7 +114,7 @@ The scripts read from and write to the individual temperature subdirectories of 
 ## Input Files
 
 - [`trajslicer_src.py`](https://github.com/ozakary/TrajSlicer/blob/main/trajslicer_src.py): Trajectory conversion tool — extracts and relabels frames from a LAMMPS dump file into XYZ format. Source: [github.com/ozakary/TrajSlicer](https://github.com/ozakary/TrajSlicer)
-- [`generate_average_strs_corrected.py`](./generate_average_strs_corrected.py): Computes NpT-corrected time-averaged structures from XYZ trajectories for all 23 temperatures
+- [`generate_average_strs_corrected.py`](./generate_average_strs_corrected.py): Computes NpT-corrected time-averaged structures from XYZ trajectories for all 30 temperatures
 
 ## Output Files
 
