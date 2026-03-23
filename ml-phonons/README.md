@@ -6,7 +6,7 @@
 - 🌐 Website: [Personal Webpage](https://cc.oulu.fi/~nmrwww/members/Ouail_Zakary.html)
 - 📁 Portfolio: [Academic Portfolio](https://ozakary.github.io/)
 ---
-This directory contains the Python scripts and SLURM job scripts for the machine learning-accelerated phonon dispersion of RuP at all 23 temperatures using the finite displacement method. Forces are evaluated using the fine-tuned MACE potential on the time-averaged structures. The workflow consists of five sequential steps: (1) generate displaced structures, (2) predict MACE forces, (3) compute force constants, (4) calculate the phonon band structure, and (5) plot the band structure and phonon density of states.
+This directory contains the Python scripts and SLURM job scripts for the machine learning-accelerated phonon dispersion of RuP at all 30 temperatures using the finite displacement method. Forces are evaluated using the fine-tuned MACE potential on the time-averaged structures. The workflow consists of five sequential steps: (1) generate displaced structures, (2) predict MACE forces, (3) compute force constants, (4) calculate the phonon band structure, and (5) plot the band structure and phonon density of states.
 
 All calculations were performed on the **LUMI supercomputer** at CSC — IT Center for Science (Finland). More details: [docs.lumi-supercomputer.eu](https://docs.lumi-supercomputer.eu/)
 
@@ -21,30 +21,30 @@ All calculations were performed on the **LUMI supercomputer** at CSC — IT Cent
 ├── 3-computing_force_constants.py
 ├── 4-calculate_band_structure_{T}K_oom-fix.py   # one per temperature
 ├── 5-plot_band_structure_improved.py
-├── fine-tuned_mace-mp-0b3-medium_compiled.model
+├── fine-tuned_mace-mp-0b3-medium_vf_compiled.model
 ├── job_script_1-generate_displacements.sh
 ├── job_script_2-mace_forces_predict_{T}K.sh     # one per temperature
 ├── job_script_3-compute_force_constants.sh
 ├── job_script_4-calculate_band_structure_{T}K_oom-fix.sh  # one per temperature
-├── 10K/
-│   ├── rup_traj_sampled-50_100ps_average_structure_10K.xyz
-│   ├── phonopy_10K.yaml
+├── 50K/
+│   ├── rup_traj_sampled-10_100ps_average_structure_50K.xyz
+│   ├── phonopy_50K.yaml
 │   ├── displaced_structures/
 │   │   ├── all_displaced_structures.xyz
 │   │   └── all_displaced_structures_out.xyz
 │   ├── FORCE_CONSTANTS
-│   ├── phonopy_10K_with_forces.yaml
-│   ├── band_data_10K.npz
-│   ├── phonon_band_10K.png
-│   └── phonon_band_Ru_projection_10K.png
-├── 50K/
+│   ├── phonopy_50K_with_forces.yaml
+│   ├── band_data_50K.npz
+│   ├── phonon_band_50K.png
+│   └── phonon_band_Ru_projection_50K.png
+├── 110K/
 │   └── ...
 ...
 └── 700K/
     └── ...
 ```
 
-The time-averaged structures (`rup_traj_sampled-50_100ps_average_structure_{T}K.xyz`) are copied from the MLMD postprocessing step into each temperature subdirectory before running the workflow.
+The time-averaged structures (`rup_traj_sampled-10_100ps_average_structure_{T}K.xyz`) are copied from the MLMD postprocessing step into each temperature subdirectory before running the workflow.
 
 ---
 
@@ -93,7 +93,7 @@ For each temperature, this script reads the time-averaged structure, generates s
 |-----------|-------|-------------|
 | **Displacement distance** | 0.02 Å | Atomic displacement amplitude |
 | **Supercell matrix** | 1×1×1 | No supercell expansion (structure is already large) |
-| **Input** (per temperature) | `./{T}K/rup_traj_sampled-50_100ps_average_structure_{T}K.xyz` | Time-averaged structure |
+| **Input** (per temperature) | `./{T}K/rup_traj_sampled-10_100ps_average_structure_{T}K.xyz` | Time-averaged structure |
 
 ### Output (per temperature)
 
@@ -115,17 +115,17 @@ For each temperature, this script reads the time-averaged structure, generates s
 
 ## Step 2 — MACE Force Prediction
 
-Force prediction is submitted **independently per temperature** to allow parallel execution across all 23 temperatures simultaneously. A dedicated job script and a temperature-specific input path are used for each:
+Force prediction is submitted **independently per temperature** to allow parallel execution across all 30 temperatures simultaneously. A dedicated job script and a temperature-specific input path are used for each:
 
 ```bash
 sbatch job_script_2-mace_forces_predict_{T}K.sh
 ```
 
-which executes (example for 10 K):
+which executes (example for 50 K):
 
 ```bash
 python3 2-batch_mace_forces_improved.py \
-    -m ./fine-tuned_mace-mp-0b3-medium_compiled.model \
+    -m ./fine-tuned_mace-mp-0b3-medium_vf_compiled.model \
     -i 10K/displaced_structures/all_displaced_structures.xyz \
     -o 10K/displaced_structures/all_displaced_structures_out.xyz \
     -dtype float64 \
@@ -138,7 +138,7 @@ This script loads all displaced structures from the multi-frame XYZ, runs the fi
 
 | Argument | Value | Description |
 |----------|-------|-------------|
-| `-m` | `fine-tuned_mace-mp-0b3-medium_compiled.model` | Fine-tuned MACE potential |
+| `-m` | `fine-tuned_mace-mp-0b3-medium_vf_compiled.model` | Fine-tuned MACE potential |
 | `-dtype` | `float64` | Floating point precision |
 | `--save-frequency` | 1 | Save output after every structure |
 | `--resume` | — | Resume from existing partial output if interrupted |
@@ -274,13 +274,13 @@ This script reads the pre-computed `band_data_{T}K.npz` files for all temperatur
 | [`1-generate_displacements_improved.py`](./1-generate_displacements_improved.py) | Generates Phonopy finite-displacement structures for all temperatures |
 | [`2-batch_mace_forces_improved.py`](./2-batch_mace_forces_improved.py) | Predicts MACE forces on all displaced structures (GPU) |
 | [`3-computing_force_constants.py`](./3-computing_force_constants.py) | Collects MACE forces and computes Phonopy force constants |
-| [`4-calculate_band_structure_{T}K_oom-fix.py`](./4-calculate_band_structure_10K_oom-fix.py) | Computes phonon band structure + Ru projection for temperature T |
+| [`4-calculate_band_structure_{T}K_oom-fix.py`](./4-calculate_band_structure_50K_oom-fix.py) | Computes phonon band structure + Ru projection for temperature T |
 | [`5-plot_band_structure_improved.py`](./5-plot_band_structure_improved.py) | Plots band structure + DOS for all temperatures |
 | [`job_script_1-generate_displacements.sh`](./job_script_1-generate_displacements.sh) | SLURM job for Step 1 |
-| [`job_script_2-mace_forces_predict_{T}K.sh`](./job_script_2-mace_forces_predict_10K.sh) | SLURM job for Step 2 (one per temperature) |
+| [`job_script_2-mace_forces_predict_{T}K.sh`](./job_script_2-mace_forces_predict_50K.sh) | SLURM job for Step 2 (one per temperature) |
 | [`job_script_3-compute_force_constants.sh`](./job_script_3-compute_force_constants.sh) | SLURM job for Step 3 |
-| [`job_script_4-calculate_band_structure_{T}K_oom-fix.sh`](./job_script_4-calculate_band_structure_10K_oom-fix.sh) | SLURM job for Step 4 (one per temperature) |
-| [`fine-tuned_mace-mp-0b3-medium_compiled.model`](https://doi.org/10.5281/zenodo.18709769) | Compiled fine-tuned MACE potential used for force prediction |
+| [`job_script_4-calculate_band_structure_{T}K_oom-fix.sh`](./job_script_4-calculate_band_structure_50K_oom-fix.sh) | SLURM job for Step 4 (one per temperature) |
+| [`fine-tuned_mace-mp-0b3-medium_vf_compiled.model`](https://doi.org/10.5281/zenodo.18709769) | Compiled fine-tuned MACE potential used for force prediction |
 
 ---
 
