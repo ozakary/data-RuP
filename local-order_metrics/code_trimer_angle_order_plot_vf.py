@@ -217,8 +217,8 @@ def plot_2d_heatmap(temperatures, output_dir='.', n_bins=100,
                     show_error_band=False,
                     error_band_alpha=0.2,
                     plot_individual_histograms=True,
-                    histogram_temps=[50, 600],
-                    horizontal_line_temps=[50, 600],
+                    histogram_temps=[100, 600],
+                    horizontal_line_temps=[100, 600],
                     histogram_figsize=(6, 4)):
     """
     Create 2D heatmap with trimer angle on x-axis, temperature on y-axis.
@@ -414,8 +414,9 @@ def main():
     """Main function for creating 2D heatmap"""
     
     # Configuration
-    temperatures = [10, 50, 100, 150, 200, 250, 300, 310, 320, 330, 340, 350, 360, 
-                   370, 380, 390, 400, 450, 500, 550, 600, 650, 700]
+    temperatures = [50, 100, 110, 120, 130, 140, 150, 160, 170, 180, 
+                    190, 200, 250, 260, 270, 280, 290, 300, 310, 320, 
+                    330, 340, 350, 400, 450, 500, 550, 600, 650, 700]
     output_dir = '.'
     n_bins = 200
     value_range = None  # Auto-detect
@@ -440,8 +441,8 @@ def main():
     
     # Individual histogram settings
     plot_individual_histograms = True  # Set to False to skip histogram plots
-    histogram_temps = [50, 600]  # Temperatures for individual histograms (must exist in data)
-    horizontal_line_temps = [50, 600]  # Temperatures for horizontal lines (can be interpolated)
+    histogram_temps = [100, 600]  # Temperatures for individual histograms (must exist in data)
+    horizontal_line_temps = [100, 600]  # Temperatures for horizontal lines (can be interpolated)
     histogram_figsize = (6, 4)  # Figure size for histogram plots (independent of 2D heatmap)
     
     # Check which files exist
