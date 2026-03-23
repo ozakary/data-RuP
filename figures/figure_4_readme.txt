@@ -1,1 +1,1 @@
-Panels 3a and 3b (cell parameter differences Δℓ and Δθ vs. temperature) were both generated using fig-3_code_plots_unit_cell_norm_3.py. The two panels were arranged in Inkscape to form the complete figure.
+Panels 3a and 3b (cell parameter differences Δℓ and Δθ vs. temperature) were both generated using fig-4ab_code_plots_unit_cell_norm_3.py, and panel 3c (space group determination) was plotted using fig-4c_code_compute_symm.py. The three panels were arranged in Inkscape to form the complete figure.
