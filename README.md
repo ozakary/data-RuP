@@ -1,4 +1,4 @@
-# Supporting Code for “*Local Symmetry Breaking and Two-Stage Phase Transitions in RuP*”
+# Supporting Code for “*Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model*”
 
 ## Graphical Abstract
 
@@ -18,7 +18,7 @@
 
 ---
 
-This is the supporting code for the manuscript “***Local Symmetry Breaking and Two-Stage Phase Transitions in RuP***”. [DOI: TBA]
+This is the supporting code for the manuscript “***Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model***”. [DOI: TBA]
 
 The repository comprises the following sections:
 
@@ -38,7 +38,7 @@ If you use this data, please cite the following:
 
 ```bibtex
 @article{zakary_2025_rup_ml,
-  title={Local Symmetry Breaking and Two-Stage Phase Transitions in RuP},
+  title={Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model},
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
   journal={rXiv},
   year={2026},
@@ -53,7 +53,7 @@ If you use this data, please cite the following:
 ```bibtex
 @dataset{zakary_2025_data_rup_ml,
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
-  title = {Supporting Data for "Local Symmetry Breaking and Two-Stage Phase Transitions in RuP"},
+  title = {Supporting Data for "Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model"},
   year = {2026},
   publisher = {Zenodo},
   doi = {10.5281/zenodo.18709769},
@@ -65,7 +65,7 @@ If you use this data, please cite the following:
 ```bibtex
 @misc{zakary_2025_github_rup_ml,
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
-  title = {Supporting Code for "Local Symmetry Breaking and Two-Stage Phase Transitions in RuP"},
+  title = {Supporting Code for "Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model"},
   year = {2026},
   publisher = {GitHub},
   journal = {GitHub repository},
