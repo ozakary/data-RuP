@@ -173,7 +173,7 @@ python3 compute_time_correlation.py \
   -i ../../dimer_bond_order/ \
   -o ./time_corr_data/ \
   -pattern "dimer_order_*K.csv" \
-  -maxtime 500 \
+  -maxtime 2000 \
   --timestep-ps 0.01
 ```
 
@@ -186,7 +186,7 @@ Key arguments:
 | `-i` | `../../dimer_bond_order/` | Directory containing `dimer_order_{T}K.csv` files |
 | `-o` | `./time_corr_data/` | Output directory for correlation data |
 | `-pattern` | `dimer_order_*K.csv` | File pattern to match input CSV files |
-| `-maxtime` | 101 | Maximum lag time in frames |
+| `-maxtime` | 2000 | Maximum lag time in frames |
 | `--timestep-ps` | 0.01 | The timestep in the XYZ trajectory (1 fs * 10 sampling steps) |
 
 #### Step 2 — Plot
@@ -195,7 +195,7 @@ Key arguments:
 python3 plot_time_correlation.py \
   -i ./time_corr_data/ \
   -o ./figures/dimer \
-  --tmax 2.0 \
+  --tmax 10.0 \
   --smooth-sigma 2.0 \
   --show
 ```
@@ -206,14 +206,14 @@ Key arguments:
 |----------|-------|-------------|
 | `-i` | `./time_corr_data/` | Input directory with computed correlation data |
 | `-o` | `./figures/dimer` | Output figure filename (prefix) |
-| `--tmax` | 2.0 | Fit C(t) only up to this time in ps (default: full range) |
+| `--tmax` | 10.0 | Fit C(t) only up to this time in ps (default: full range) |
 | `--smooth-sigma` | 2.0 | Gaussian smoothing sigma for FFT T_osc extraction in bins (default: 2.0, set 0 to disable) |
 | `--show` | True | To show the plots |
 
 #### Output
 
 - Time auto-correlation function C(t) of the dimer bond order parameter for all temperatures
-- **Auto-correlation time** τ extracted from the decay of C(t)
+- **Auto-correlation time** τ_2 extracted from the decay of C(t)
 - **Oscillation frequency** extracted from C(t)
 - **Long-time plateau** extracted from C(t)
 
