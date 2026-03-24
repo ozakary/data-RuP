@@ -202,7 +202,7 @@ def plot_relaxation_time(temperatures, tau_values, tau_errors, args):
     ax.set_xlabel(r'$T$ / K')
     ax.set_ylabel(r'$\tau_{2}$ / ' + args.unit)
     ax.set_xlim(0, 750)
-    ax.set_ylim(0.10, 0.35)
+    ax.set_ylim(0.0, 5.0)
     ax.xaxis.set_major_locator(LinearLocator(numticks=4))
     ax.yaxis.set_major_locator(LinearLocator(numticks=6))
 #    ax.axhline(y=0, color='grey', linestyle='--', linewidth=2.5)
@@ -310,7 +310,7 @@ def plot_diagnostics(t, y, prediction, temp, Rf, args):
     y_max  = max(np.max(y), np.max(prediction))
     margin = 0.05 * (y_max - y_min)
     ax1.set_ylim(y_min - margin, y_max + margin)
-    ax1.set_xlim(0.0, 2.0)
+    ax1.set_xlim(0.0, 10.0)
 
     # --- Inset: zoom into first 20% of time range ---
     t_zoom_max = t[-1] * 0.20
@@ -342,7 +342,7 @@ def plot_diagnostics(t, y, prediction, temp, Rf, args):
 
     r_abs = max(np.abs(residual).max(), 1e-10)
     ax2.set_ylim(-r_abs * 1.2, r_abs * 1.2)
-    ax2.set_xlim(0.0, 2.0)
+    ax2.set_xlim(0.0, 10.0)
 
     plt.tight_layout()
     fig.subplots_adjust(hspace=0.08)
