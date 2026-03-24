@@ -56,6 +56,8 @@ def fit_relaxation(t, y, freq_guess=1, tmax=None):
         mask = t <= tmax
         t, y = t[mask], y[mask]
 
+    freq_guess = np.clip(freq_guess, 0.1, 20.0) if np.isfinite(freq_guess) else 1.0
+    
     tail   = y[-max(5, int(0.05 * len(y))):]
     Cinf0  = max(0.0, float(np.mean(tail)))
     A0     = max(y[0] - Cinf0, 1e-6)
@@ -467,8 +469,8 @@ def main():
 
         plot_diagnostics(t, y, prediction, temp, Rf, args)
 
-        tau_values.append(tau)
-        tau_errors.append(perr[1])
+        tau_values.append(tau2)
+        tau_errors.append(perr[4])
         cinf_values.append(cinf)
         freq_values.append(freq_fit)
         freq_errors.append(perr[5])
