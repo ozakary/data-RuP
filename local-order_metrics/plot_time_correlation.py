@@ -18,6 +18,8 @@ from functools import partial
 from matplotlib.ticker import LinearLocator
 from scipy.optimize import curve_fit
 from scipy.ndimage import gaussian_filter1d
+from mpl_toolkits.axes_grid1.inset_locator import inset_axes
+
 
 try:
     import figure_formatting_v2 as ff
@@ -163,9 +165,25 @@ def plot_time_correlation(temperatures, correlations, timesteps, args):
         t = np.arange(len(correlations[i])) * timesteps[i]
         ax.plot(t, correlations[i], linewidth=2.5, color=colors[idx], label=temperatures[i])
 
+    # --- Inset: zoom into first 5 ps ---
+    axins = inset_axes(ax, width="50%", height="40%", loc='upper right',
+                       bbox_to_anchor=(0.02, 0.05, 0.9, 0.92),
+                       bbox_transform=ax.transAxes)
+    for idx, i in enumerate(order):
+        t = np.arange(len(correlations[i])) * timesteps[i]
+        zoom_mask = t <= 5.0
+        axins.plot(t[zoom_mask], correlations[i][zoom_mask],
+                   linewidth=1.2, color=colors[idx])
+    axins.axhline(0, color='grey', linestyle='--', linewidth=1.5)
+    axins.set_xlim(0.0, 1.0)
+    axins.set_ylim(-0.05, 0.3)
+    axins.xaxis.set_major_locator(LinearLocator(numticks=3))
+    axins.yaxis.set_major_locator(LinearLocator(numticks=3))
+
+
     ax.set_xlabel(f't / {args.unit}')
     ax.set_ylabel(r'$C(t)$')
-    ax.set_xlim(0, 5)
+    ax.set_xlim(0.0, 20.0)
     ax.set_ylim(-0.05, 0.3)
     ax.xaxis.set_major_locator(LinearLocator(numticks=5))
     ax.yaxis.set_major_locator(LinearLocator(numticks=8))
