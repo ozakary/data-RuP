@@ -233,16 +233,16 @@ def plot_relaxation_time(temperatures, tau_values, tau_errors, args):
     plt.close()
 
 
-def plot_omega(temperatures, omega_values, omega_errors, args):
+def plot_freq_osc(temperatures, freq_osc_values, freq_osc_errors, args):
     """Plot oscillation frequency vs temperature."""
     fig, ax = plt.subplots(figsize=(5.25, 5.25))
 
     temp_numeric  = np.array([float(t.rstrip('K')) for t in temperatures])
     order         = np.argsort(temp_numeric)
     temps_sorted  = temp_numeric[order]
-    omega_sorted  = np.array(omega_values)[order]
+    freq_osc_sorted  = np.array(freq_osc_values)[order]
     colors        = plt.cm.coolwarm(np.linspace(0, 1, len(temperatures)))
-    valid         = np.isfinite(omega_sorted)
+    valid         = np.isfinite(freq_osc_sorted)
 
     invalid_temps = temps_sorted[~valid]
     if len(invalid_temps) > 0:
@@ -251,22 +251,22 @@ def plot_omega(temperatures, omega_values, omega_errors, args):
         ax.text(460, 0.2, 'no oscillations', ha='center', va='center',
                 fontsize=20, color='dimgray', style='italic', rotation=90, transform=ax.transData)
 
-    err_sorted = np.array(omega_errors)[order]
-    ax.plot(temps_sorted[valid], omega_sorted[valid], '-', lw=1.6, color='0.2', zorder=2)
-    ax.errorbar(temps_sorted[valid], omega_sorted[valid], yerr=err_sorted[valid],
+    err_sorted = np.array(freq_osc_errors)[order]
+    ax.plot(temps_sorted[valid], freq_osc_sorted[valid], '-', lw=1.6, color='0.2', zorder=2)
+    ax.errorbar(temps_sorted[valid], freq_osc_sorted[valid], yerr=err_sorted[valid],
                 fmt='none', ecolor='0.4', elinewidth=1.2, capsize=3, zorder=2)
-    for idx, (T, omega) in enumerate(zip(temps_sorted, omega_sorted)):
-        if np.isfinite(omega):
-            ax.scatter([T], [omega], s=60, color=colors[idx], edgecolors='white', linewidths=0.6, zorder=3)
+    for idx, (T, freq_osc) in enumerate(zip(temps_sorted, freq_osc_sorted)):
+        if np.isfinite(freq_osc):
+            ax.scatter([T], [freq_osc], s=60, color=colors[idx], edgecolors='white', linewidths=0.6, zorder=3)
 
     ax.set_xlabel(r'$T$ / K')
-    ax.set_ylabel(r'$\omega$ / ' + args.omega_unit)
+    ax.set_ylabel(r'$f$ / ' + args.freq_osc_unit)
     ax.set_xlim(0, 750)
     ax.set_ylim(0, 5)
     ax.xaxis.set_major_locator(LinearLocator(numticks=4))
     ax.yaxis.set_major_locator(LinearLocator(numticks=6))
 
-    output_file = f"{args.output_prefix}_omega-osc.svg"
+    output_file = f"{args.output_prefix}_freq_osc-osc.svg"
     plt.savefig(output_file, bbox_inches='tight')
     print(f"✓ Saved: {output_file}")
     if args.show:
@@ -439,7 +439,7 @@ def parse_arguments():
     parser.add_argument('-prefix', '--file-prefix', default='time_corr', type=str)
     parser.add_argument('-temps', '--temperatures', nargs='+', default=None)
     parser.add_argument('--unit', default='ps', type=str)
-    parser.add_argument('--omega-unit', default='THz', type=str)
+    parser.add_argument('--freq_osc-unit', default='THz', type=str)
     parser.add_argument('--xmin', type=float, default=0)
     parser.add_argument('--xmax', type=float, default=None)
     parser.add_argument('--ylim', nargs=2, type=float, default=None)
@@ -532,7 +532,7 @@ def main():
     plot_time_correlation(temperatures, correlations, timesteps, args)
     plot_relaxation_time(temperatures, tau_values, tau_errors, args)
     plot_cinf(temperatures, cinf_values, args)
-    plot_omega(temperatures, freq_values, freq_errors, args)
+    plot_freq_osc(temperatures, freq_values, freq_errors, args)
     plot_fft_spectrum(temperatures, correlations, timesteps, args, smooth_sigma=args.smooth_sigma)
 
     print("\n✓ All plots saved!")
