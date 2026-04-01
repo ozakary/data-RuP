@@ -34,16 +34,16 @@ The repository comprises the following sections:
 ## Citations
 If you use this data, please cite the following:
 
-### Preprint
+### Preprint [![DOI](https://img.shields.io/badge/DOI-10.26434%2Fchemrxiv.15001387/v1-yellow.svg)](https://doi.org/10.26434/chemrxiv.15001387/v1)
 
 ```bibtex
 @article{zakary_2025_rup_ml,
   title={Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model},
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
-  journal={rXiv},
+  journal={ChemRxiv},
   year={2026},
-  doi={TBA},
-  url={TBA},
+  doi={10.26434/chemrxiv.15001387/v1},
+  url={https://doi.org/10.26434/chemrxiv.15001387/v1},
   note={Preprint}
 }
 ```
