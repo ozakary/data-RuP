@@ -18,7 +18,7 @@
 
 ---
 
-This is the supporting code for the manuscript “***Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model***”. [DOI: TBA]
+This is the supporting code for the manuscript “***Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model***”. [![DOI](https://img.shields.io/badge/DOI-10.26434%2Fchemrxiv.15001387/v1-yellow.svg)](https://doi.org/10.26434/chemrxiv.15001387/v1)
 
 The repository comprises the following sections:
 
