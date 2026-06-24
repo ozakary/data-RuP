@@ -3,7 +3,7 @@
 
 """
 plots dos for different curves, first  performs gaussian smearing if sigma is passed
-outputs dos_comparison.pdf file
+outputs comparison_dos.pdf file
 """
 
 
@@ -91,7 +91,13 @@ if __name__ == "__main__":
     ef_300 = 11.41
     ef_350 = 11.4436
     ef_370 = 11.4112
-    shift  = 0.05
+    shift  = 0.0
+    ef_170=11.2945
+    ef_180 = 11.2941
+    ef_190 = 11.2787
+    ef_330 = 11.2658
+    ef_350 = 11.2606
+    
 
     # Main panel ranges 
     x_main = (args.xmin,args.xmax)
@@ -107,11 +113,12 @@ if __name__ == "__main__":
     # Each entry: (label, filename, xshift, yscale, yoffset, color)
 
     curves = [
-        ("orthorhombic", "./DOS_total_ortho_all_relaxed",            0.1,   1/4,     0.0,     "black"),
-        ("monoclinic",   "./DOS_total_mono_370K_all_relaxed",      0.025, 1/(4*9), 0.0,     "red"),
-        ("T=300K",       "dos_300",                              ef_300,1/(4*9), -shift,  "blue"),
-        ("T=350K",       "dos_350",                              ef_350,1/(4*9), -shift,  "magenta"),
-        ("T=370K",       "dos_370",                              ef_370,1/(4*9), 0.0,     "green"),
+        ("Orthorhombic", "../DOS_total_ortho_all_relaxed",            0.,   1/4,     0.0,     "black"),
+        ("Monoclinic",   "../DOS_total_mono_370K_all_relaxed",      0.0, 1/(4*9), 0.0,     "red"),
+        ("$T = 180 K$",       "dos_180",                              ef_180-0.07,1/(4*9), -shift,  "blue"),
+        ("$T = 190 K$",       "dos_190",                              ef_190-0.03,1/(4*9), -shift,  "magenta"),
+        ("$T = 330 K$",       "dos_330",                              ef_330,1/(4*9), 0.0,     "green"),
+        ("$T = 350 K$",       "dos_350",                              ef_350,1/(4*9), 0.0,     "orange"),
     ]
 
 
@@ -129,14 +136,15 @@ if __name__ == "__main__":
 
 
     # Vertical line at x=0 (your "vert" + "0.0 w l")
-    ax.axvline(0.0, lw=2.2, color="0.35",ls="dashed")
+    #ax.axvline(0.0, lw=2.2, color="0.35",ls="--")
+    ax.axvline(0.0, lw=2.2, color="gray",ls="--")
     # Horizontal y=0 reference line
     ax.axhline(0.0, lw=1.6, color="0.6")
 
     ax.set_xlim(*x_main)
     ax.set_ylim(*y_main)
-    ax.set_xlabel("Energy (eV)")
-    ax.set_ylabel("DOS (States/eV/fu)")
+    ax.set_xlabel("Energy / eV")
+    ax.set_ylabel("DOS / States.eV$^{-1}$.fu$^{-1}$")
 
 
     # Nice ticks
@@ -177,10 +185,12 @@ if __name__ == "__main__":
 
 
     # Legend placement similar to gnuplot: "bottom left" / "key left"
-    leg = ax.legend(loc="lower left", frameon=True, framealpha=0.9, edgecolor="0.8")
+    #leg = ax.legend(loc="lower left", frameon=True, framealpha=0.9, edgecolor="0.8")
+    leg=ax.legend(bbox_to_anchor=(0.5, -0.15), frameon=False, loc='upper center', ncol=3)
     leg.get_frame().set_linewidth(0.8)
 
-    axins.axvline(0.0, lw=2.0, color="0.35",ls="dashed")
+    #axins.axvline(0.0, lw=2.0, color="0.35",ls="dashed")
+    axins.axvline(0.0, lw=2.0, color="gray",ls="dashed")
     axins.axhline(0.0, lw=1.4, color="0.6")
 
     axins.set_xlim(*x_inset)
