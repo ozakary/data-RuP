@@ -28,8 +28,9 @@ The repository comprises the following sections:
 4. Python script for processing the output MLMD trajectories and creating the average structures. ([directory](./lammps-mlmd_postprocessing/))  
 5. Python scripts used to compute RDFs and structure factors. ([directory](./rdfs_and_structure-factors/))  
 6. Python scripts used to compute local-order metrics. ([directory](./local-order_metrics/))  
-7. Python scripts used for the machine learning-accelerated phonon dispersion analysis. ([directory](./ml-phonons/))  
-8. Python scripts and raw numerical data for all figures used in the main manuscript and the Supporting Information. ([directory](./figures/))  
+7. Python scripts used for folding the supercells and plotting the DOS. ([directory](./folding_supercells_and_plotting_dos))  
+8. Python scripts used for the machine learning-accelerated phonon dispersion analysis. ([directory](./ml-phonons/))  
+9. Python scripts and raw numerical data for all figures used in the main manuscript and the Supporting Information. ([directory](./figures/))  
 
 ## Citations
 If you use this data, please cite the following:
