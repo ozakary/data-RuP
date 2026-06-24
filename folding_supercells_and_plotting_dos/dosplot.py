@@ -3,7 +3,7 @@
 
 """
 plots dos for different curves, first  performs gaussian smearing if sigma is passed
-outputs comparison_dos.pdf file
+outputs dos_comparison.pdf file
 """
 
 
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     ap = argparse.ArgumentParser()
     #ap.add_argument("--input", type=str, default=None, help="Path to 2-column file: x y")
-    ap.add_argument("--sigma", type=float, default=3.0, help="Gaussian sigma in in units of grid length")
+    ap.add_argument("--sigma", type=float, default=10.0, help="Gaussian sigma in in units of grid length")
     ap.add_argument(
         "--mode",
         type=str,
@@ -107,8 +107,8 @@ if __name__ == "__main__":
     # Each entry: (label, filename, xshift, yscale, yoffset, color)
 
     curves = [
-        ("orthorhombic", "DOS_total_ortho_all_relaxed",            0.1,   1/4,     0.0,     "black"),
-        ("monoclinic",   "DOS_total_mono_370K_all_relaxed",      0.025, 1/(4*9), 0.0,     "red"),
+        ("orthorhombic", "./DOS_total_ortho_all_relaxed",            0.1,   1/4,     0.0,     "black"),
+        ("monoclinic",   "./DOS_total_mono_370K_all_relaxed",      0.025, 1/(4*9), 0.0,     "red"),
         ("T=300K",       "dos_300",                              ef_300,1/(4*9), -shift,  "blue"),
         ("T=350K",       "dos_350",                              ef_350,1/(4*9), -shift,  "magenta"),
         ("T=370K",       "dos_370",                              ef_370,1/(4*9), 0.0,     "green"),
@@ -208,6 +208,6 @@ if __name__ == "__main__":
     # Save
     if args.figout:
         plt.savefig(args.figout, dpi=300)
-        #plt.show()
+        plt.show()
     else:
         plt.show()
