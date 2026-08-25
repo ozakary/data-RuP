@@ -1,4 +1,4 @@
-# Supporting Code for “*Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model*”
+# Supporting Code for “*Local Symmetry Breaking and Correlated Fluctuations in Quantum Materials from Atomistic Foundation Models*”
 
 ## Graphical Abstract
 
@@ -18,7 +18,7 @@
 
 ---
 
-This is the supporting code for the manuscript “***Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model***”. [![DOI](https://img.shields.io/badge/DOI-10.26434%2Fchemrxiv.15001387/v1-yellow.svg)](https://doi.org/10.26434/chemrxiv.15001387/v1)
+This is the supporting code for the manuscript “***Local Symmetry Breaking and Correlated Fluctuations in Quantum Materials from Atomistic Foundation Models***”. [![DOI](https://img.shields.io/badge/DOI-10.26434%2Fchemrxiv.15001387/v1-yellow.svg)](https://doi.org/10.26434/chemrxiv.15001387/v2)
 
 The repository comprises the following sections:
 
@@ -35,16 +35,16 @@ The repository comprises the following sections:
 ## Citations
 If you use this data, please cite the following:
 
-### Preprint [![DOI](https://img.shields.io/badge/DOI-10.26434%2Fchemrxiv.15001387/v1-yellow.svg)](https://doi.org/10.26434/chemrxiv.15001387/v1)
+### Preprint [![DOI](https://img.shields.io/badge/DOI-10.26434%2Fchemrxiv.15001387/v2-yellow.svg)](https://doi.org/10.26434/chemrxiv.15001387/v2)
 
 ```bibtex
 @article{zakary_2025_rup_ml,
-  title={Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model},
+  title={Local Symmetry Breaking and Correlated Fluctuations in Quantum Materials from Atomistic Foundation Models},
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
   journal={ChemRxiv},
   year={2026},
-  doi={10.26434/chemrxiv.15001387/v1},
-  url={https://doi.org/10.26434/chemrxiv.15001387/v1},
+  doi={10.26434/chemrxiv.15001387/v2},
+  url={https://doi.org/10.26434/chemrxiv.15001387/v2},
   note={Preprint}
 }
 ```
@@ -54,7 +54,7 @@ If you use this data, please cite the following:
 ```bibtex
 @dataset{zakary_2025_data_rup_ml,
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
-  title = {Supporting Data for "Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model"},
+  title = {Supporting Data for "Local Symmetry Breaking and Correlated Fluctuations in Quantum Materials from Atomistic Foundation Models"},
   year = {2026},
   publisher = {Zenodo},
   doi = {10.5281/zenodo.18709769},
@@ -66,7 +66,7 @@ If you use this data, please cite the following:
 ```bibtex
 @misc{zakary_2025_github_rup_ml,
   author = {Zakary, Ouail, and Yin, Weiguo and Aryal, Niraj},
-  title = {Supporting Code for "Local Symmetry Breaking and Two-Stage Phase Transitions in RuP Uncovered by a Fine-Tuned Atomistic Foundation Model"},
+  title = {Supporting Code for "Local Symmetry Breaking and Correlated Fluctuations in Quantum Materials from Atomistic Foundation Models"},
   year = {2026},
   publisher = {GitHub},
   journal = {GitHub repository},
