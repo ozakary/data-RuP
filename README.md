@@ -18,7 +18,7 @@
 
 ---
 
-This is the supporting code for the manuscript “***Local Symmetry Breaking and Correlated Fluctuations in Quantum Materials from Atomistic Foundation Models***”. [![DOI](https://img.shields.io/badge/DOI-10.26434%2Fchemrxiv.15001387/v1-yellow.svg)](https://doi.org/10.26434/chemrxiv.15001387/v2)
+This is the supporting code for the manuscript “***Local Symmetry Breaking and Correlated Fluctuations in Quantum Materials from Atomistic Foundation Models***”. [![DOI](https://img.shields.io/badge/DOI-10.26434%2Fchemrxiv.15001387/v2-yellow.svg)](https://doi.org/10.26434/chemrxiv.15001387/v2)
 
 The repository comprises the following sections:
 
